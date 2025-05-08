@@ -65,7 +65,7 @@
                         <span class="hide-menu">FORM</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                        <a class="sidebar-link" href="<?= site_url('buku'); ?>" aria-expanded="false">
                             <iconify-icon icon="solar:layers-minimalistic-bold-duotone"></iconify-icon>
                             <span class="hide-menu">Buku Tamu</span>
                         </a>

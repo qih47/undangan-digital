@@ -23,7 +23,6 @@ $(document).ready(function () {
     },
   });
 
-
   $("#submit").css("cursor", "pointer");
 
   $(document).on("click", "#submit", function (event) {
@@ -38,6 +37,7 @@ $(document).ready(function () {
     var ucapan = $("#ucapan").val();
     var csrfName = $("#csrf_token").attr("name");
     var csrfHash = $("#csrf_token").val();
+    var nama = $("#nama").val();
 
     if (!id_invitation) {
       ohSnap("ID undangan tidak ditemukan", { color: "red" });
@@ -53,6 +53,7 @@ $(document).ready(function () {
         url: "/invitation/insert",
         data: {
           id_invitation: id_invitation,
+          nama: nama,
           kehadiran: kehadiran,
           ucapan: ucapan,
           [csrfName]: csrfHash,

@@ -140,7 +140,7 @@
                                 <span class="border-start border-info ps-3">Partner</span>
                             </label>
                         </div>
-                        <div class="form-floating mb-3 ">
+                        <!-- <div class="form-floating mb-3 ">
                             <select class="form-select border border-info" id="gender" name="gender" required>
                                 <option value="L">Pilih</option>
                                 <option value="L">Laki-laki</option>
@@ -150,7 +150,7 @@
                                 <i class="ti ti-users me-2 fs-4 text-info"></i>
                                 <span class="border-start border-info ps-3">Jenis Kelamin</span>
                             </label>
-                        </div>
+                        </div> -->
                         <div class="form-floating mb-3">
                             <input type="text" id="kota" name="kota" class="form-control border border-info" placeholder="Password" />
                             <label>

@@ -47,14 +47,14 @@ class Invitation extends BaseController
         // Ambil data dari form
         $nama   = $this->request->getPost('nama');
         $partner   = $this->request->getPost('partner');
-        $gender = $this->request->getPost('gender');
+        // $gender = $this->request->getPost('gender');
         $kota   = $this->request->getPost('kota');
         $status = $this->request->getPost('status');
 
         $model->insert([
             'nama'   => $nama,
             'partner'   => $partner,
-            'gender' => $gender,
+            // 'gender' => $gender,
             'kota'   => $kota,
             'status' => $status,
         ]);
@@ -123,7 +123,7 @@ class Invitation extends BaseController
     public function getDataInvitation()
     {
         $model = new \App\Models\InvitationModel();
-        $data = $model->findAll(); 
+        $data = $model->findAll();
 
         return $this->response->setJSON(['data' => $data]);
     }
@@ -131,8 +131,21 @@ class Invitation extends BaseController
     public function getDataHadir()
     {
         $model = new \App\Models\InvitationModel();
-        $data = $model->getDaftarHadir(); 
+        $data = $model->getDaftarHadir();
 
         return $this->response->setJSON(['data' => $data]);
+    }
+
+    public function getBukuTamu()
+    {
+        $model = new \App\Models\InvitationModel();
+        $data = $model->getDaftarHadir();
+
+        return $this->response->setJSON(['data' => $data]);
+    }
+
+    public function viewBukuTamu()
+    {
+        return view('buku/index');
     }
 }

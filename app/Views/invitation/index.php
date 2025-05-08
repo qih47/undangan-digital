@@ -110,7 +110,7 @@
                                 <p class="wedding-of" style="color: purple;">THE WEDDING OF</p>
                                 <h1 class="couple-names" style="color: purple;">GITA &<br>QISTHI</h1>
                                 <p class="dear" style="color: purple;">Dear</p>
-                                <h2 class="guest-name" style="color: purple;"> <?= esc($undangan) ?></h2>
+                                <h2 class="guest-name" style="color: purple;"> <?= esc(strtoupper($undangan)) ?></h2>
                                 <p class="disclaimer" style="color: purple;">*Dengan senang hati mengundang anda ke acara pernikahan kami.</p>
 
                                 <div class="button-group">

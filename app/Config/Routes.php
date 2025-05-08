@@ -15,5 +15,7 @@ $routes->get('/invitation/listundangan', 'Invitation::getDataInvitation');
 $routes->get('/invitation/daftarhadir', 'Invitation::getDataHadir');
 $routes->post('/invitation/insert', 'Ucapan::insert');
 $routes->get('/invitation/list', 'Invitation::InputInvitation');
+$routes->get('/invitation/buku', 'Invitation::getBukuTamu');
+$routes->get('/buku/', 'Invitation::viewBukuTamu');
 $routes->post('/invitation/simpan', 'Invitation::simpan');
 $routes->get('/invitation/(:alphanum)', 'Invitation::uniqidInvitation/$1');

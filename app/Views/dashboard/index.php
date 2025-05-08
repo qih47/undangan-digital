@@ -57,7 +57,6 @@
                                         <th>Nama</th>
                                         <th>Jumlah</th>
                                         <th>Kota</th>
-                                        <th>Status</th>
                                         <th>Jam Hadir</th>
                                     </tr>
                                 </thead>
@@ -158,20 +157,20 @@
                                     }
 
                                     foreach ($chats as $chat):
-                                        $gender = ($chat['gender'] == "L") ? "user-6.jpg" : "user-5.jpg";
+                                        // $gender = ($chat['gender'] == "L") ? "user-6.jpg" : "user-5.jpg";
                                     ?>
                                         <li>
                                             <a href="javascript:void(0)" class="px-3 py-2 bg-hover-light-black d-flex align-items-start justify-content-between chat-user" id="chat_user_<?= esc($chat['id']) ?>" data-user-id="<?= esc($chat['id']) ?>">
                                                 <div class="d-flex align-items-center">
                                                     <span class="position-relative">
-                                                        <img src="<?= base_url('images/profile/' . $gender) ?>" alt="<?= esc($chat['nama']) ?>" width="36" height="36" class="rounded-circle" />
+                                                        <img src="<?= base_url('images/profile/profile.png') ?>" alt="<?= esc($chat['nama']) ?>" width="36" height="36" class="rounded-circle" />
                                                         <span class="position-absolute bottom-0 end-0 p-1 badge rounded-pill bg-<?= esc($chat['kota']) ?>">
                                                             <span class="visually-hidden">Status</span>
                                                         </span>
                                                     </span>
                                                     <div class="ms-2 d-inline-block w-75">
-                                                        <h1 class="mb-1 fw-semibold chat-title" style="font-size: 9pt;" data-username="<?= esc($chat['nama']) ?>">
-                                                            <?= esc($chat['nama']) ?>
+                                                        <h1 class="mb-1 fw-semibold chat-title" style="font-size: 9pt;" data-username="<?= esc($chat['pengirim']) ?>">
+                                                            <?= esc($chat['pengirim']) ?>
                                                         </h1>
                                                         <span class="fs-2 text-body-color d-block text-wrap text-justify"><?= esc($chat['ucapan']) ?></span>
                                                     </div>
