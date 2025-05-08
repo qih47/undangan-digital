@@ -14,75 +14,73 @@ $(document).ready(function () {
     slidesToScroll: 1,
   });
 
-$.ajax({
-  type: "GET",
-  url: "/invitation/data",
-  dataType: "html",
-  success: function (response) {
-    $(".block-data-doa").append(response);
-  },
-});
-
+  $.ajax({
+    type: "GET",
+    url: "/invitation/data",
+    dataType: "html",
+    success: function (response) {
+      $(".block-data-doa").append(response);
+    },
+  });
 
 
   $("#submit").css("cursor", "pointer");
 
-$(document).on("click", "#submit", function (event) {
-  event.preventDefault();
+  $(document).on("click", "#submit", function (event) {
+    event.preventDefault();
 
-  var kehadiran;
-  if ($("#hadir").prop("checked")) kehadiran = "hadir";
-  if ($("#mungkin-hadir").prop("checked")) kehadiran = "mungkin-hadir";
-  if ($("#tidak-hadir").prop("checked")) kehadiran = "tidak-hadir";
+    var kehadiran;
+    if ($("#hadir").prop("checked")) kehadiran = "hadir";
+    if ($("#mungkin-hadir").prop("checked")) kehadiran = "mungkin-hadir";
+    if ($("#tidak-hadir").prop("checked")) kehadiran = "tidak-hadir";
 
-  var id_invitation = $("#id_invitation").val();
-  var ucapan = $("#ucapan").val();
-  var csrfName = $("#csrf_token").attr("name");
-  var csrfHash = $("#csrf_token").val();
+    var id_invitation = $("#id_invitation").val();
+    var ucapan = $("#ucapan").val();
+    var csrfName = $("#csrf_token").attr("name");
+    var csrfHash = $("#csrf_token").val();
 
-  if (!id_invitation) {
-    ohSnap("ID undangan tidak ditemukan", { color: "red" });
-  } else if (!kehadiran) {
-    ohSnap("Kehadiran harus diisi", { color: "red" });
-  } else if (ucapan == "") {
-    ohSnap("Ucapan harus diisi", { color: "red" });
-  } else {
-    $("#submit").prop("disabled", true).addClass("button--loading");
+    if (!id_invitation) {
+      ohSnap("ID undangan tidak ditemukan", { color: "red" });
+    } else if (!kehadiran) {
+      ohSnap("Kehadiran harus diisi", { color: "red" });
+    } else if (ucapan == "") {
+      ohSnap("Ucapan harus diisi", { color: "red" });
+    } else {
+      $("#submit").prop("disabled", true).addClass("button--loading");
 
-    $.ajax({
-      type: "POST",
-      url: "/invitation/insert",
-      data: {
-        id_invitation: id_invitation,
-        kehadiran: kehadiran,
-        ucapan: ucapan,
-        [csrfName]: csrfHash,
-      },
-      success: function (data) {
-        if (data.trim() == "success") {
-          ohSnap("Terima Kasih atas doa dan ucapannya", { color: "green" });
+      $.ajax({
+        type: "POST",
+        url: "/invitation/insert",
+        data: {
+          id_invitation: id_invitation,
+          kehadiran: kehadiran,
+          ucapan: ucapan,
+          [csrfName]: csrfHash,
+        },
+        success: function (data) {
+          if (data.trim() == "success") {
+            ohSnap("Terima Kasih atas doa dan ucapannya", { color: "green" });
 
-          $.ajax({
-            type: "GET",
-            url: "/invitation/data",
-            dataType: "html",
-            success: function (response) {
-              $(".block-data-doa").html(response);
-              document.getElementById("block-doa").scrollIntoView({
-                behavior: "smooth",
-                block: "end",
-              });
+            $.ajax({
+              type: "GET",
+              url: "/invitation/data",
+              dataType: "html",
+              success: function (response) {
+                $(".block-data-doa").html(response);
+                document.getElementById("block-doa").scrollIntoView({
+                  behavior: "smooth",
+                  block: "end",
+                });
 
-              $("#ucapan").val("");
-              $("#submit").removeClass("button--loading");
-            },
-          });
-        }
-      },
-    });
-  }
-});
-
+                $("#ucapan").val("");
+                $("#submit").removeClass("button--loading");
+              },
+            });
+          }
+        },
+      });
+    }
+  });
 
   let mql = window.matchMedia("(min-width: 992px)");
   // console.log(mql)

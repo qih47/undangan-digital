@@ -24,7 +24,7 @@ class Invitation extends BaseController
     {
         $model = new InvitationModel();
 
-        $data = $model->where('uniqid', $uniqid)->first(); 
+        $data = $model->where('uniqid', $uniqid)->first();
 
         if (!$data) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -60,7 +60,7 @@ class Invitation extends BaseController
         ]);
         $id = $model->getInsertID();
 
-        
+
         // Nama file untuk QR code
         $fileName = 'qrcode_' . uniqid() . '.png';
         $filePath = FCPATH . 'qrcode/' . $fileName;
@@ -94,7 +94,12 @@ class Invitation extends BaseController
         }
 
 
-        return redirect()->to('/invitation/list')->with('message', 'Undangan berhasil disimpan!');
+        return redirect()->to('/invitation/list')->with('message', '
+    <div class="alert alert-success alert-dismissible bg-success text-white border-0 show flash-alert" role="alert">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>Success - </strong> List Undangan berhasil ditambahkan!
+    </div>
+');
     }
 
     // Menampilkan detail undangan berdasarkan ID
@@ -113,5 +118,13 @@ class Invitation extends BaseController
         $invitations = $model->findAll();
 
         return view('invitation/InputInvitation', ['invitations' => $invitations]);
+    }
+
+    public function getDataInvitation()
+    {
+        $model = new \App\Models\InvitationModel();
+        $data = $model->findAll(); 
+
+        return $this->response->setJSON(['data' => $data]);
     }
 }

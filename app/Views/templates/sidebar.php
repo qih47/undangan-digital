@@ -34,7 +34,7 @@
                                 class="feather-sm text-warning "></i>
                             Account Setting</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item d-flex gap-2" href="<?=base_url('logout');?>"><i data-feather="log-out"
+                        <a class="dropdown-item d-flex gap-2" href="<?= base_url('logout'); ?>"><i data-feather="log-out"
                                 class="feather-sm text-danger "></i>
                             Logout</a>
                         <div class="dropdown-divider"></div>
@@ -53,7 +53,7 @@
                         <span class="hide-menu">Home</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link active" href="<?= site_url('dashboard');?>" aria-expanded="false">
+                        <a class="sidebar-link" href="<?= site_url('dashboard'); ?>" aria-expanded="false">
                             <iconify-icon icon="solar:atom-line-duotone"></iconify-icon>
                             <span class="hide-menu">Dashboard</span>
                         </a>
@@ -71,12 +71,12 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+                        <a class="sidebar-link" href="<?= site_url('invitation/list'); ?>" aria-expanded="false">
                             <iconify-icon icon="solar:danger-circle-line-duotone"></iconify-icon>
                             <span class="hide-menu">List Undangan</span>
                         </a>
                     </li>
-                </ul> 
+                </ul>
             </nav>
             <!-- End Sidebar navigation -->
         </div>
