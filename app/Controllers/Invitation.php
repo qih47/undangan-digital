@@ -127,4 +127,12 @@ class Invitation extends BaseController
 
         return $this->response->setJSON(['data' => $data]);
     }
+
+    public function getDataHadir()
+    {
+        $model = new \App\Models\InvitationModel();
+        $data = $model->getDaftarHadir(); 
+
+        return $this->response->setJSON(['data' => $data]);
+    }
 }

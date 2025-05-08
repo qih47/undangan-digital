@@ -12,6 +12,7 @@ $routes->get('/dashboard', 'Ucapan::index');
 $routes->get('/invitation', 'Invitation::invitation');
 $routes->get('/invitation/data', 'Ucapan::display');
 $routes->get('/invitation/listundangan', 'Invitation::getDataInvitation');
+$routes->get('/invitation/daftarhadir', 'Invitation::getDataHadir');
 $routes->post('/invitation/insert', 'Ucapan::insert');
 $routes->get('/invitation/list', 'Invitation::InputInvitation');
 $routes->post('/invitation/simpan', 'Invitation::simpan');
