@@ -71,7 +71,7 @@
                             <div class="d-flex gap-2">
                                 <div class="">
                                     <small>Jumlah Hadir</small>
-                                    <h4 class="text-primary mb-0 ">200</h4>
+                                    <h4 class="text-primary mb-0 "><?= esc($jumlah->jumlah ?? 0) ?></h4>
                                 </div>
                                 <div class="">
                                     <div class="breadbar"></div>

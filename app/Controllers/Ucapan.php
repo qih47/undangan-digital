@@ -3,15 +3,27 @@
 namespace App\Controllers;
 
 use App\Models\UcapanModel;
+use \App\Models\InvitationModel;
 
 class Ucapan extends BaseController
 {
     public function index()
     {
         $chatModel = new UcapanModel();
-        $data['chats'] = $chatModel->getWithInvitation();
+        $countingModel = new InvitationModel();
+        // $data['chats'] = $chatModel->getWithInvitation();
+        $data['jumlah'] = $countingModel->getCountingTamu();
+        $data['counting']= $countingModel->getCountingHadir();
         return view('dashboard/index', $data);
     }
+
+    public function getUcapanJSON()
+    {
+        $chatModel = new UcapanModel();
+        $ucapan = $chatModel->getWithInvitation();
+        return $this->response->setJSON($ucapan); 
+    }
+
 
     public function display(): string
     {
@@ -73,9 +85,6 @@ class Ucapan extends BaseController
         return $this->response->setStatusCode(500)->setBody('Error saat menyimpan data');
     }
 
-
-
-
     public function idUndangan($id)
     {
 
@@ -87,4 +96,5 @@ class Ucapan extends BaseController
         }
         return view('invitation/index', ['data' => $invitation]);
     }
+
 }

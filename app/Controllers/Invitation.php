@@ -39,6 +39,11 @@ class Invitation extends BaseController
         return view('invitation/InputInvitation');
     }
 
+    public function showKehadiran()
+    {
+        return view('invitation/showKehadiran');
+    }
+
     // Menyimpan data undangan
     public function simpan()
     {
@@ -115,10 +120,13 @@ class Invitation extends BaseController
     public function InputInvitation()
     {
         $model = new InvitationModel();
-        $invitations = $model->findAll();
+        $data['invitations'] = $model->findAll();
+        $data['jumlah'] = $model->getCountingTamu();
 
-        return view('invitation/InputInvitation', ['invitations' => $invitations]);
+        return view('invitation/InputInvitation', $data);
     }
+
+
 
     public function getDataInvitation()
     {
@@ -146,6 +154,8 @@ class Invitation extends BaseController
 
     public function viewBukuTamu()
     {
-        return view('buku/index');
+        $countingModel = new InvitationModel();
+        $data['jumlah'] = $countingModel->getCountingTamu();
+        return view('buku/index', $data);
     }
 }

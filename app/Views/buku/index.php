@@ -22,7 +22,7 @@
                             <div class="d-flex gap-2">
                                 <div class="">
                                     <small>Jumlah Hadir</small>
-                                    <h4 class="text-primary mb-0 ">200</h4>
+                                    <h4 class="text-primary mb-0 "><?= esc($jumlah->jumlah ?? 0) ?></h4>
                                 </div>
                                 <div class="">
                                     <div class="breadbar"></div>
@@ -77,16 +77,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalDoaLabel">Ucapan Doa</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title" id="modalDoaLabel">Ucapan Doa</h5> 
             </div>
             <div class="modal-body">
                 <p id="isiDoa">Belum ada doa.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button type="button" name="btn-modal-close" id="btn-modal-close" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
