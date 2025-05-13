@@ -10,7 +10,7 @@
     <link href="<?= base_url(); ?>/kartu/css/app.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/kartu/css/slick.css" />
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/kartu/css/slick-theme.css" />
-    <link rel="icon" href="<?= base_url(); ?>/kartu/favicon.ico" />
+    <link rel="shortcut icon" type="image/png" href="<?= base_url(); ?>/images/logos/tittleLogo.png" />
 </head>
 
 <body>

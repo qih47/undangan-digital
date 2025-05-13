@@ -4,17 +4,17 @@
               <ul class="navbar-nav">
 
                   <div class="brand-logo d-none d-xl-flex align-items-center justify-content-between">
-                      <a href="index.html" class="text-nowrap logo-img d-flex align-items-center gap-2">
-                          <b class="logo-icon">
+                      <a href="<?=base_url('dashboard');?>" class="text-nowrap logo-img d-flex align-items-center gap-2">
+                          <!-- <b class="logo-icon"> -->
                               <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                               <!-- Dark Logo icon -->
-                              <img src="<?= base_url(); ?>/images/logos/logo-light-icon.svg" alt="homepage" class="dark-logo" />
-                          </b>
+                              <!-- <img src="<?= base_url(); ?>/images/logos/logo-light-icon.svg" alt="homepage" class="dark-logo" /> -->
+                          <!-- </b> -->
                           <!--End Logo icon -->
                           <!-- Logo text -->
                           <span class="logo-text">
                               <!-- dark Logo text -->
-                              <img src="<?= base_url(); ?>/images/logos/logo-light-text.svg" alt="homepage" class="dark-logo ps-2" />
+                              <img src="<?= base_url(); ?>/images/logos/logo.png" alt="homepage" class="dark-logo ps-2" width="150" height="40"/>
                           </span>
                       </a>
                   </div>

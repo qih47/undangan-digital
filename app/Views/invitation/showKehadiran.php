@@ -24,7 +24,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="<?= base_url(); ?>show/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="shortcut icon" type="image/png" href="<?= base_url(); ?>/images/logos/tittleLogo.png" />
     <!-- Template Stylesheet -->
     <link href="<?= base_url(); ?>show/css/style.css" rel="stylesheet">
 </head>
