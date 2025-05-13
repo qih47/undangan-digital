@@ -158,4 +158,30 @@ class Invitation extends BaseController
         $data['jumlah'] = $countingModel->getCountingTamu();
         return view('buku/index', $data);
     }
+
+    public function cek_tamu_baru()
+    {
+        $modelTMBaru = new InvitationModel();
+
+        $data = $modelTMBaru->getTamuBaru();
+        return $this->response->setJSON(['data' => $data]);
+    }
+
+
+    public function getTamuByScan()
+    {
+        $uniqid = $this->request->getPost('uniqid');
+
+        if (!$uniqid) {
+            return $this->response->setJSON(['status' => false, 'message' => 'No uniqid provided']);
+        }
+        $modelScan = new InvitationModel();
+        $data = $modelScan->getTamuByUniqId($uniqid);
+
+        if ($data) {
+            return $this->response->setJSON(['status' => true, 'data' => $data]);
+        } else {
+            return $this->response->setJSON(['status' => false, 'message' => 'Data not found']);
+        }
+    }
 }

@@ -1,60 +1,77 @@
-(function ($) {
-    "use strict";
+let lastId = null;
 
-    // Spinner
-    var spinner = function () {
-        setTimeout(function () {
-            if ($('#spinner').length > 0) {
-                $('#spinner').removeClass('show');
-            }
-        }, 1);
-    };
-    spinner(0);
-    
-    
-    // Initiate the wowjs
-    new WOW().init();
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("carouselContainer").innerHTML = `
+    <div id="sambutanAwal" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <div id="sambutan" class="carousel-item active">
+          <img src="/show/img/carousel-1.jpg" class="img-fluid" alt="Image">
+          <div class="carousel-caption">
+            <div class="p-3 mx-auto animated zoomIn" style="max-width: 1200px;">
+              <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
+                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;font-family:verdana;">WE ARE GETTING MARRIED</h4>
+              </div>
+              <h1 class="display-1 text-capitalize text-white mb-3">Gita <i class="fa fa-heart text-primary"></i> Qisthi</h1>
+              <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
+                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;font-family:verdana;">28 Juni 2025</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div id="selamatDatang" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <div id="kehadiran" class="carousel-item">
+          <img src="/show/img/carousel-1.jpg" class="img-fluid" alt="Image">
+          <div class="carousel-caption">
+            <div class="p-3 mx-auto animated zoomIn" style="max-width: 1200px;">
+              <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
+                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;font-family:verdana;">SELAMAT DATANG KEPADA</h4>
+              </div>
+              <h1 id="namaTamu" class="display-1 text-capitalize text-white mb-3">NAMA</h1>
+              <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
+                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;font-family:verdana;">TERIMA KASIH TELAH HADIR</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
 
-    // Fixed Navbar
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            $('.sticky-top').addClass('shadow-sm').css('top', '0px');
-        } else {
-            $('.sticky-top').removeClass('shadow-sm').css('top', '-300px');
-        }
-    });
+  // Inisialisasi tampilan awal
+  document.querySelector("#sambutan").classList.add("active");
+  document.querySelector("#kehadiran").classList.remove("active");
 
+  // Cek data baru tiap 5 detik
+  setInterval(cekDataBaru, 5000);
+});
 
-    // Smooth scrolling on the navbar links
-    $(".navbar-nav a").on('click', function (event) {
-        if (this.hash !== "") {
-            event.preventDefault();
-            
-            $('html, body').animate({
-                scrollTop: $(this.hash).offset().top - 90
-            }, 1500, 'easeInOutExpo');
-            
-            if ($(this).parents('.navbar-nav').length) {
-                $('.navbar-nav .active').removeClass('active');
-                $(this).closest('a').addClass('active');
-            }
-        }
-    });
-    
-    
-   // Back to top button
-   $(window).scroll(function () {
-    if ($(this).scrollTop() > 300) {
-        $('.back-to-top').fadeIn('slow');
-    } else {
-        $('.back-to-top').fadeOut('slow');
+function cekDataBaru() {
+  $.getJSON("/invitation/selamat-datang", function (res) {
+    const data = res.data; // <- ambil objek data di dalam response
+
+    if (data && data.id !== lastId) {
+      let nama =
+        data.partner === "" ? data.nama : `${data.nama} & ${data.partner}`;
+      document.getElementById("namaTamu").textContent = nama;
+
+      document.querySelector("#sambutan").classList.remove("active");
+      document.querySelector("#kehadiran").classList.add("active");
+
+      lastId = data.id;
+
+      setTimeout(() => {
+        document.querySelector("#kehadiran").classList.remove("active");
+        document.querySelector("#sambutan").classList.add("active");
+      }, 10000);
+    } else if (!data) {
+      // jika tidak ada data, pastikan sambutan aktif
+      document.querySelector("#kehadiran").classList.remove("active");
+      document.querySelector("#sambutan").classList.add("active");
     }
-    });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-        return false;
-    }); 
-
-})(jQuery);
+  });
+}
 

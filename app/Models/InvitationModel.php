@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Controllers\Invitation;
 use CodeIgniter\Model;
 
 class InvitationModel extends Model
@@ -42,8 +43,6 @@ class InvitationModel extends Model
             ->getResultArray();
     }
 
-
-
     public function getCountingTamu()
     {
         return $this->db
@@ -52,6 +51,29 @@ class InvitationModel extends Model
             ->get()
             ->getRow();
     }
+
+    public function getTamuByUniqId($uniqid)
+    {
+        return $this->db
+            ->table('daftar_hadir')
+            ->select('daftar_hadir.id, daftar_hadir.id_invitation, invitation.nama, invitation.partner, invitation.kota')
+            ->join('invitation', 'daftar_hadir.id_invitation = invitation.id')
+            ->where('invitation.uniqid', "$uniqid")
+            ->get()
+            ->getRowArray();
+    }
+
+    public function getTamuBaru()
+    {
+        return $this->db
+            ->table('daftar_hadir')
+            ->select('daftar_hadir.id, daftar_hadir.id_invitation, invitation.nama, invitation.partner, invitation.kota')
+            ->join('invitation', 'daftar_hadir.id_invitation = invitation.id')
+            ->orderBy('daftar_hadir.id', 'DESC') 
+            ->get()
+            ->getRowArray();
+    }
+
 
     public function getCountingHadir()
     {
