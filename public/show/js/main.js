@@ -41,37 +41,40 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
 
-  // Inisialisasi tampilan awal
   document.querySelector("#sambutan").classList.add("active");
   document.querySelector("#kehadiran").classList.remove("active");
 
-  // Cek data baru tiap 5 detik
   setInterval(cekDataBaru, 5000);
 });
 
 function cekDataBaru() {
   $.getJSON("/invitation/selamat-datang", function (res) {
-    const data = res.data; // <- ambil objek data di dalam response
+    const data = res.data;
 
     if (data && data.id !== lastId) {
       let nama =
         data.partner === "" ? data.nama : `${data.nama} & ${data.partner}`;
       document.getElementById("namaTamu").textContent = nama;
 
-      document.querySelector("#sambutan").classList.remove("active");
-      document.querySelector("#kehadiran").classList.add("active");
+      if (data.status == 1) {
+        document.querySelector("#sambutan").classList.remove("active");
+        document.querySelector("#kehadiran").classList.add("active");
 
-      lastId = data.id;
+        lastId = data.id;
 
-      setTimeout(() => {
+        setTimeout(() => {
+          document.querySelector("#kehadiran").classList.remove("active");
+          document.querySelector("#sambutan").classList.add("active");
+        }, 10000);
+      } else {
         document.querySelector("#kehadiran").classList.remove("active");
         document.querySelector("#sambutan").classList.add("active");
-      }, 10000);
+      }
     } else if (!data) {
-      // jika tidak ada data, pastikan sambutan aktif
       document.querySelector("#kehadiran").classList.remove("active");
       document.querySelector("#sambutan").classList.add("active");
     }
   });
 }
+
 

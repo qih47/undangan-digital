@@ -127,7 +127,6 @@ class Invitation extends BaseController
     }
 
 
-
     public function getDataInvitation()
     {
         $model = new \App\Models\InvitationModel();
@@ -164,8 +163,14 @@ class Invitation extends BaseController
         $modelTMBaru = new InvitationModel();
 
         $data = $modelTMBaru->getTamuBaru();
+
+        if ($data && isset($data['id']) && isset($data['status']) && $data['status'] == '1') {
+            $modelTMBaru->updateStatusKehadiran($data['id']);
+        }
+
         return $this->response->setJSON(['data' => $data]);
     }
+
 
 
     public function getTamuByScan()

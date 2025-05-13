@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Controllers\Invitation;
+use CodeIgniter\Database\SQLite3\Table;
 use CodeIgniter\Model;
 
 class InvitationModel extends Model
@@ -67,11 +68,19 @@ class InvitationModel extends Model
     {
         return $this->db
             ->table('daftar_hadir')
-            ->select('daftar_hadir.id, daftar_hadir.id_invitation, invitation.nama, invitation.partner, invitation.kota')
+            ->select('daftar_hadir.id, daftar_hadir.id_invitation, daftar_hadir.status, invitation.nama, invitation.partner, invitation.kota')
             ->join('invitation', 'daftar_hadir.id_invitation = invitation.id')
-            ->orderBy('daftar_hadir.id', 'DESC') 
+            ->orderBy('daftar_hadir.id', 'DESC')
             ->get()
             ->getRowArray();
+    }
+
+    public function updateStatusKehadiran($id)
+    {
+        return $this->db
+            ->table('daftar_hadir')
+            ->where('id', $id)
+            ->update(['status' => '0']);
     }
 
 
