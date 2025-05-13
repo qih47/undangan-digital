@@ -13,7 +13,7 @@ class UcapanModel extends Model
 
     public function getWithInvitation()
     {
-        return $this->select('kirim_doa.nama AS pengirim,kirim_doa.kehadiran,kirim_doa.ucapan,kirim_doa.time_created, invitation.*')
+        return $this->select('kirim_doa.id as id_ucapan,kirim_doa.nama AS pengirim,kirim_doa.kehadiran,kirim_doa.ucapan,kirim_doa.time_created, invitation.*')
             ->join('invitation', 'invitation.id = kirim_doa.id_invitation')
             ->orderBy('kirim_doa.time_created', 'DESC')
             ->findAll();
