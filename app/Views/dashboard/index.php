@@ -47,8 +47,18 @@
             <div class="col-lg-8 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title mb-4">Dashboard</h5>
-                        <p class="mb-0">GQ Invitation Dashboard</p>
+                        <!-- <h5 class="card-title mb-4">Dashboard</h5> -->
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title mb-4">GQ Invitation Dashboard</h5>
+
+                            <div class="form-floating ms-3" style="width: 300px;">
+                                <input type="text" id="scanQR" name="scanQR" class="form-control border border-info" placeholder="Scan di sini" />
+                                <label>
+                                    <i class="ti ti-barcode me-2 fs-4 text-info"></i>
+                                    <span class="border-start border-info ps-3">Scan di sini</span>
+                                </label>
+                            </div>
+                        </div>
                         <div class="table-responsive">
                             <table id="tabel_daftar_hadir" class="table table-striped table-bordered display text-nowrap mt-3">
                                 <thead>

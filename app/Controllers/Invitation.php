@@ -178,15 +178,53 @@ class Invitation extends BaseController
         $uniqid = $this->request->getPost('uniqid');
 
         if (!$uniqid) {
-            return $this->response->setJSON(['status' => false, 'message' => 'No uniqid provided']);
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'No uniqid provided'
+            ]);
         }
-        $modelScan = new InvitationModel();
-        $data = $modelScan->getTamuByUniqId($uniqid);
+
+        $model = new InvitationModel();
+        $data = $model->where('uniqid', $uniqid)->first();
 
         if ($data) {
-            return $this->response->setJSON(['status' => true, 'data' => $data]);
+            return $this->response->setJSON([
+                'status' => true,
+                'data' => $data
+            ]);
         } else {
-            return $this->response->setJSON(['status' => false, 'message' => 'Data not found']);
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'Data not found'
+            ]);
+        }
+    }
+
+    public function simpanKehadiran()
+    {
+        $idInvitation = $this->request->getPost('id_invitation');
+        $jumlah = $this->request->getPost('jumlah');
+
+        if (!$idInvitation || !$jumlah) {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'ID dan jumlah hadir wajib diisi'
+            ]);
+        }
+
+        $model = new \App\Models\InvitationModel();
+        $berhasil = $model->simpanKehadiran($idInvitation, $jumlah);
+
+        if ($berhasil) {
+            return $this->response->setJSON([
+                'status' => true,
+                'message' => 'Kehadiran berhasil disimpan'
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'Gagal menyimpan kehadiran'
+            ]);
         }
     }
 }

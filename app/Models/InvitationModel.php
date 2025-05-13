@@ -96,4 +96,22 @@ class InvitationModel extends Model
             ->get()
             ->getRow();
     }
+
+    public function simpanKehadiran($idInvitation, $jumlah)
+    {
+        $builder = $this->db->table('daftar_hadir');
+
+        $existing = $builder->where('id_invitation', $idInvitation)->get()->getRow();
+
+        if ($existing) {
+            return $builder->where('id_invitation', $idInvitation)->update([
+                'jumlah' => $jumlah
+            ]);
+        } else {
+            return $builder->insert([
+                'id_invitation' => $idInvitation,
+                'jumlah' => $jumlah
+            ]);
+        }
+    }
 }

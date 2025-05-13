@@ -20,6 +20,7 @@ $routes->get('/invitation/list', 'Invitation::InputInvitation');
 $routes->get('/invitation/buku', 'Invitation::getBukuTamu');
 $routes->get('/scan-tamu', 'Invitation::cekKehadiran');
 $routes->post('/invitation/get-tamu', 'Invitation::getTamuByScan');
+$routes->post('/invitation/simpan-kehadiran', 'Invitation::simpanKehadiran');
 $routes->get('/invitation/selamat-datang', 'Invitation::cek_tamu_baru');
 $routes->get('/buku/', 'Invitation::viewBukuTamu');
 $routes->get('/show', 'Invitation::showKehadiran');
