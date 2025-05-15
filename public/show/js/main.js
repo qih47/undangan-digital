@@ -1,45 +1,48 @@
 let lastId = null;
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("carouselContainer").innerHTML = `
-    <div id="sambutanAwal" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner" role="listbox">
-        <div id="sambutan" class="carousel-item active">
-          <img src="/show/img/carousel-1.jpg" class="img-fluid" alt="Image">
-          <div class="carousel-caption">
-            <div class="p-3 mx-auto animated zoomIn" style="max-width: 1200px;">
-              <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;font-family:verdana;">WE ARE GETTING MARRIED</h4>
-              </div>
-              <h1 class="display-1 text-capitalize text-white mb-3">Gita <i class="fa fa-heart text-primary"></i> Qisthi</h1>
-              <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
-                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;font-family:verdana;">28 Juni 2025</h4>
-              </div>
+document.getElementById("carouselContainer").innerHTML = `
+  <div id="sambutanAwal" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+      <div id="sambutan" class="carousel-item active">
+        <img src="/show/img/carousel-1.jpg" class="img-fluid" alt="Image">
+        <div class="carousel-caption">
+          <div class="p-3 mx-auto animated zoomIn text-center" style="max-width: 1200px;">
+            <img src="/images/logos/logo.png" class="img-fluid" alt="Logo" style="width:auto; height:80px; margin:-100px 0px 0px 70px">
+            <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
+              <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px; font-family: verdana;">WE ARE GETTING MARRIED</h4>
+            </div>
+            <h1 class="display-1 text-capitalize text-white mb-3">Gita <i class="fa fa-heart text-primary"></i> Qisthi</h1>
+            <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
+              <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px; font-family: verdana;">28 Juni 2025</h4>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div id="selamatDatang" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner" role="listbox">
-        <div id="kehadiran" class="carousel-item">
-          <img src="/show/img/carousel-1.jpg" class="img-fluid" alt="Image">
-          <div class="carousel-caption">
-            <div class="p-3 mx-auto animated zoomIn" style="max-width: 1200px;">
-              <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;font-family:verdana;">SELAMAT DATANG KEPADA</h4>
-              </div>
-              <h1 id="namaTamu" class="display-1 text-capitalize text-white mb-3">NAMA</h1>
-              <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
-                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;font-family:verdana;">TERIMA KASIH TELAH HADIR</h4>
-              </div>
+  <div id="selamatDatang" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+      <div id="kehadiran" class="carousel-item">
+        <img src="/show/img/carousel-1.jpg" class="img-fluid" alt="Image">
+        <div class="carousel-caption">
+          <div class="p-3 mx-auto animated zoomIn text-center" style="max-width: 1200px;">
+            <img src="/images/logos/logo.png" class="img-fluid" alt="Logo" style="width:auto; height:80px; margin:-100px 0px 0px 70px">
+            <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
+              <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px; font-family: verdana;">SELAMAT DATANG KEPADA</h4>
+            </div>
+            <h1 id="namaTamu" class="display-1 text-capitalize text-white mb-3">NAMA</h1>
+            <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
+              <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px; font-family: verdana;">TERIMA KASIH TELAH HADIR</h4>
             </div>
           </div>
         </div>
       </div>
     </div>
-  `;
+  </div>
+`;
+
 
   document.querySelector("#sambutan").classList.add("active");
   document.querySelector("#kehadiran").classList.remove("active");
@@ -76,5 +79,3 @@ function cekDataBaru() {
     }
   });
 }
-
-
