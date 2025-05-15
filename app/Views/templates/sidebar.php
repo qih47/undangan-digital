@@ -54,8 +54,14 @@
                     </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="<?= site_url('dashboard'); ?>" aria-expanded="false">
-                            <iconify-icon icon="solar:atom-line-duotone"></iconify-icon>
+                            <iconify-icon icon="solar:chart-bold-duotone"></iconify-icon>
                             <span class="hide-menu">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="<?= site_url('show'); ?>" target="_blank" aria-expanded="false">
+                            <iconify-icon icon="solar:tv-line-duotone"></iconify-icon>
+                            <span class="hide-menu">Show Kehadiran</span>
                         </a>
                     </li>
                     </li>
@@ -66,13 +72,13 @@
                     </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="<?= site_url('buku'); ?>" aria-expanded="false">
-                            <iconify-icon icon="solar:layers-minimalistic-bold-duotone"></iconify-icon>
+                            <iconify-icon icon="solar:notebook-bookmark-bold-duotone"></iconify-icon>
                             <span class="hide-menu">Buku Tamu</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="<?= site_url('invitation/list'); ?>" aria-expanded="false">
-                            <iconify-icon icon="solar:danger-circle-line-duotone"></iconify-icon>
+                            <iconify-icon icon="solar:book-2-bold-duotone"></iconify-icon>
                             <span class="hide-menu">List Undangan</span>
                         </a>
                     </li>
