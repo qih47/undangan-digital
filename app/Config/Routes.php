@@ -23,6 +23,6 @@ $routes->post('/invitation/get-tamu', 'Invitation::getTamuByScan');
 $routes->post('/invitation/simpan-kehadiran', 'Invitation::simpanKehadiran');
 $routes->get('/invitation/selamat-datang', 'Invitation::cek_tamu_baru');
 $routes->get('/buku/', 'Invitation::viewBukuTamu');
-$routes->get('/show', 'Invitation::showKehadiran');
+$routes->get('/kehadiran', 'Invitation::showKehadiran');
 $routes->post('/invitation/simpan', 'Invitation::simpan');
 $routes->get('/invitation/(:alphanum)', 'Invitation::uniqidInvitation/$1');

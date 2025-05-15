@@ -39,9 +39,9 @@ class Invitation extends BaseController
         return view('invitation/InputInvitation');
     }
 
-    public function showKehadiran()
+    public function showKehadiran(): string
     {
-        return view('invitation/showKehadiran');
+        return view('show/showKehadiran');
     }
 
     // Menyimpan data undangan
