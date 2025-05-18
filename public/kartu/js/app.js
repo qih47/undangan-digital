@@ -170,18 +170,39 @@ $("#qrcode").click(function () {
   $("#id02").show();
 });
 
+// $(".buka-udangan").click(function () {
+//   $(".main-title").hide();
+//   $(".main-img").hide();
+//   $("#pay").show();
+//   $(".desktop-bar").show();
+//   $(".separator").css("position", "absolute");
+//   $(".mobile-separator").css("visibility", "visible");
+//   // $("#id02").show();
+//   playAudio();
+//   $(".music-control").show().removeClass("off");
+//   $(".sound-off").hide();
+//   $(".sound-on").show();
+// });
+
 $(".buka-udangan").click(function () {
-  $(".main-title").hide();
-  $(".main-img").hide();
-  $("#pay").show();
-  $(".desktop-bar").show();
-  $(".separator").css("position", "absolute");
-  $(".mobile-separator").css("visibility", "visible");
-  // $("#id02").show();
-  playAudio();
-  $(".music-control").show().removeClass("off");
-  $(".sound-off").hide();
-  $(".sound-on").show();
+  $(".main-title, .main-img").fadeOut(500, function () {
+    $("#pay, .desktop-bar, .music-control").fadeIn(500);
+    $(".separator").css("position", "absolute");
+    $(".mobile-separator").css("visibility", "visible");
+    $(".mobile-separator").fadeIn(800, function () {
+      $(".welcome .content .content-data")
+        .css("display", "flex")
+        .hide()
+        .fadeIn(600);
+    });
+    $(".desktop-bar").show();
+    $(".main-title").hide();
+    $(".main-img").hide();
+    playAudio();
+    $(".music-control").removeClass("off");
+    $(".sound-off").hide();
+    $(".sound-on").show();
+  });
 });
 
 gsap.from(".aniTitle", {

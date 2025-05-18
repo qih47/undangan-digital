@@ -11,6 +11,11 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/kartu/css/slick.css" />
     <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/kartu/css/slick-theme.css" />
     <link rel="shortcut icon" type="image/png" href="<?= base_url(); ?>/images/logos/tittleLogo.png" />
+    <!-- Swiper CSS -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
 </head>
 
 <body>
@@ -35,7 +40,7 @@
                         text-align: center;
                         padding: 40px;
                         box-sizing: border-box;
-                        margin-top: 200px;
+                        margin-top: 150px;
                     }
 
                     .invitation-text {
@@ -95,6 +100,76 @@
                         flex-wrap: nowrap;
                         text-wrap: nowrap;
                     }
+
+                    .img-slide-top {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                        /* Biar proporsional, tidak terpotong */
+                        border-radius: 16px;
+                        display: block;
+                        margin: 0 auto;
+                    }
+
+                    .swiper-slide {
+                        display: block;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 1rem;
+
+                    }
+
+                    .swiper.mySwiper {
+                        position: relative;
+                        /* atau absolute */
+                        z-index: 10;
+                        /* lebih tinggi dari .content-data */
+                    }
+
+                    /* .content-data {
+                        position: relative;
+                        z-index: 1;
+                    } */
+
+                    .img-static {
+                        width: 100%;
+                        height: auto;
+                        border-radius: 12px;
+                        display: block;
+                        object-fit: cover;
+                    }
+
+
+                    .row.gx-3.mb-3>div {
+                        padding: 8px;
+                        /* kasih jarak antar gambar */
+                    }
+
+                    .mb-4 img.img-static {
+                        margin-top: 12px;
+                        /* kasih jarak atas foto bawah */
+                    }
+
+                    .grid-2-foto {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 16px;
+                        /* jarak antar foto */
+                        margin-bottom: 24px;
+                    }
+
+                    .img-grid {
+                        width: 100%;
+                        height: auto;
+                        object-fit: cover;
+                        border-radius: 12px;
+                        display: block;
+                    }
+
+                    /* .content-data {
+                        display: block;
+                        width: 100%;
+                    } */
                 </style>
                 <?php
                 if (esc($data['partner']) == "") {
@@ -107,11 +182,11 @@
                     <div class="top-title">
                         <div class="invitation-wrapper">
                             <div class="invitation-text">
-                                <p class="wedding-of" style="color: purple;">THE WEDDING OF</p>
-                                <h1 class="couple-names" style="color: purple;">GITA &<br>QISTHI</h1>
-                                <p class="dear" style="color: purple;">Dear</p>
-                                <h2 class="guest-name" style="color: purple;"> <?= esc(strtoupper($undangan)) ?></h2>
-                                <p class="disclaimer" style="color: purple;">*Dengan senang hati mengundang anda ke acara pernikahan kami.</p>
+                                <p class="wedding-of" style="color: #9ea970;">THE WEDDING OF</p>
+                                <h1 class="couple-names" style="color: #9ea970;">GITA <br>&<br>QISTHI</h1>
+                                <p class="dear" style="color: #9ea970;">Dear</p>
+                                <h2 class="guest-name" style="color: #9ea970;"> <?= esc(strtoupper($undangan)) ?></h2>
+                                <p class="disclaimer" style="color: #9ea970;">*Dengan senang hati mengundang anda ke acara pernikahan kami.</p>
 
                                 <div class="button-group">
                                     <button class="buka-udangan aniTitle">BUKA UNDANGAN</button>
@@ -192,7 +267,7 @@
             </div>
             <div class="mobile-separator" id="mobile-scroll">
                 <div class="welcome">
-                    <img src="<?= base_url(); ?>/kartu/img/mobile-img.jpg" style="width: 100%" />
+                    <img src="<?= base_url(); ?>images/moment/photo20.jpg" style="width: 100%" />
                     <div class="content">
                         <img src="<?= base_url(); ?>/kartu/img/content-top.svg" class="background-top" alt="" />
                         <div class="content-data">
@@ -343,74 +418,244 @@
                             <div class="space-daun gs_reveal">
                                 <img src="<?= base_url(); ?>/kartu/img/daun-banyak.svg" class="w-100" alt="" />
                             </div>
-                            <div id="love-id" class="block-profile">
-                                <div class="profile-nickname mt-3 gs_reveal">
-                                    <span class="panggilan signature-font">Gita</span>
-                                </div>
-                                <div class="profile-picture gs_reveal gs_reveal_fromRight">
-                                    <img
-                                        src="<?= base_url(); ?>/kartu/img/profile-cewe.png"
-                                        class="picture-rounded"
-                                        style="border: 2px solid #ffffff; border-radius: 100%"
-                                        alt="" />
-                                </div>
-                                <div class="profile-name mt-1 gs_reveal">
-                                    <span class="title-content nama-lengkap">Gita Laras Rohatina</span>
+                            <style>
+                                .block-profile {
+                                    margin: 1rem 5px;
+                                    border-radius: 10px;
+                                    background: #f0f8ff00;
+                                    width: 100%;
+                                    text-align: center;
+                                }
+
+                                .profile-horizontal {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 1rem;
+                                    justify-content: center;
+                                }
+
+                                .profile-picture {
+                                    flex-shrink: 0;
+                                }
+
+                                .img-profile-wrapper {
+                                    display: flex;
+                                    justify-content: center;
+                                }
+
+                                .img-profile-zoomed {
+                                    width: 300px;
+                                    height: 450px;
+                                    object-fit: cover;
+                                    border-radius: 0;
+                                }
+
+                                /* Khusus wanita - rounded kiri atas */
+                                .block-profile.right .img-profile-zoomed {
+                                    border-top-left-radius: 70px;
+                                }
+
+                                /* Khusus pria - rounded kanan atas */
+                                .block-profile.left .img-profile-zoomed {
+                                    border-top-right-radius: 70px;
+                                }
+
+                                .profile-nickname {
+                                    flex: unset;
+                                }
+
+                                .nickname-wrapper {
+                                    padding-left: 0;
+                                    padding-right: 0;
+                                }
+
+                                .block-profile.left .nickname-wrapper {
+                                    padding-left: 50px;
+                                    text-align: left;
+                                }
+
+                                .block-profile.right .nickname-wrapper {
+                                    padding-left: 50px;
+                                    text-align: left;
+                                }
+
+                                .panggilan.signature-font {
+                                    display: inline-block;
+                                    white-space: nowrap;
+                                }
+
+                                .profile-name,
+                                .detail-keluarga {
+                                    margin-top: 10px;
+                                }
+
+                                .font-dasar {
+                                    margin: 0;
+                                    font-size: 1rem;
+                                }
+
+                                /* Nama lengkap dan detail keluarga umum */
+                                .profile-name,
+                                .detail-keluarga {
+                                    color: white;
+                                    margin-top: 10px;
+                                }
+
+                                /* WANITA - kiri */
+                                .block-profile.left .profile-name,
+                                .block-profile.left .detail-keluarga {
+                                    text-align: left;
+                                    padding-left: 20px;
+                                    margin-left: 0;
+                                }
+
+                                .block-profile.left .detail-keluarga p {
+                                    text-align: left;
+                                    margin: 0;
+                                }
+
+                                /* PRIA - kanan */
+                                .block-profile.right .profile-name,
+                                .block-profile.right .detail-keluarga {
+                                    text-align: right;
+                                    padding-right: 20px;
+                                    margin-right: 0;
+                                }
+
+                                .block-profile.right .detail-keluarga {
+                                    text-align: right;
+                                    padding-right: 20px;
+                                }
+
+                                .block-profile.right .detail-keluarga p {
+                                    margin: 0;
+                                    width: 100%;
+                                    text-align: right;
+                                }
+
+                                .nama-lengkap {
+                                    font-size: 28px !important;
+                                    /* gedein font */
+                                    font-weight: bold;
+                                    font-family: "Cormorant Garamond", serif;
+                                    /* atau font lo sendiri */
+                                    line-height: 1.1;
+                                    /* jarak antar baris */
+                                    letter-spacing: -0.5px;
+                                    /* rapetin antar huruf */
+                                    margin: 0;
+                                    padding: 0;
+                                }
+
+                                .detail-keluarga .font-dasar {
+                                    font-family: 'Cormorant Garamond', serif;
+                                    font-size: 1.2rem;
+                                }
+
+                                @media (max-width: 768px) {
+                                    .img-profile-zoomed {
+                                        width: 220px;
+                                        height: 330px;
+                                    }
+
+                                    .panggilan.signature-font {
+                                        font-size: 38pt !important;
+                                    }
+
+                                    .nama-lengkap {
+                                        font-size: 20px !important;
+                                    }
+
+                                    .detail-keluarga .font-dasar {
+                                        font-size: 1rem;
+                                    }
+
+                                    /* Geser posisi gambar pria ke kanan */
+                                    .block-profile.left .img-profile-wrapper {
+                                        justify-content: flex-end;
+                                        padding-right: 0px;
+                                    }
+
+                                    /* Geser posisi gambar wanita ke kiri */
+                                    .block-profile.right .img-profile-wrapper {
+                                        justify-content: flex-start;
+                                        padding-left: 65px;
+                                    }
+
+                                    .padding-tambahan {
+                                        padding-right: 120px !important;
+                                    }
+                                }
+                            </style>
+                            <!-- Wanita (kiri) -->
+                            <div id="love-id" class="block-profile left">
+                                <div class="profile-horizontal">
+                                    <div class="profile-picture gs_reveal gs_reveal_fromLeft">
+                                        <div class="img-profile-wrapper">
+                                            <img src="<?= base_url(); ?>images/moment/wanita1.jpg" class="img-profile-zoomed" alt="" />
+                                        </div>
+                                    </div>
+                                    <div class="profile-nickname mt-3 gs_reveal">
+                                        <div class="nickname-wrapper">
+                                            <span class="panggilan signature-font padding-tambahan" style="padding-right: 50px;">Gita</span>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <!-- <a href="https://www.instagram.com/beyshalayla/" target="_blank" class="profile-ig mt-1 btn-ig gs_reveal">
-                                    <img src="img/icon-ig.svg" alt=""> <span style="margin-left: 10px;">beyshalayla</span>
-                                </a> -->
-                                <div class="detail-keluarga gs_reveal">
-                                    <p class="font-dasar">PUTRI KETIGA DARI</p>
-                                    <p class="font-dasar">Bapak Edi Supriyadi</p>
+                                <div class="profile-name mt-1 gs_reveal">
+                                    <span class="title-content nama-lengkap" style="font-size: 20pt;">Gita Laras Rohatina</span>
+                                </div>
+                                <div class="profile-name gs_reveal">
+                                    <p class="font-dasar">PUTRI DARI</p>
+                                    <p class="font-dasar">Bapak Edi Supriadi</p>
                                     <p class="font-dasar">dan Ibu Heni (ALM)</p>
                                 </div>
+
                                 <div class="daun-melayang gs_reveal gs_reveal_fromRight">
-                                    <img
-                                        src="<?= base_url(); ?>/kartu/img/daun-profile-kanan.svg"
-                                        class="img-kanan-profile"
-                                        alt="" />
+                                    <img src="<?= base_url(); ?>/kartu/img/daun-profile-kanan.svg" class="img-kanan-profile" alt="" />
                                 </div>
-                                <div class="daun-melayang gs_reveal gs_reveal_fromLeft">
-                                    <img
-                                        src="<?= base_url(); ?>/kartu/img/daun-profile-kiri.svg"
-                                        class="img-kiri-profile"
-                                        alt="" />
-                                </div>
+                                <!-- <div class="daun-melayang gs_reveal gs_reveal_fromLeft">
+                                    <img src="<?= base_url(); ?>/kartu/img/daun-profile-kiri.svg" class="img-kiri-profile" alt="" />
+                                </div> -->
                             </div>
+
+                            <!-- Tulisan "dan" -->
                             <div class="block-dan mt-3">
                                 <img src="<?= base_url(); ?>/kartu/img/dan.svg" alt="" />
                             </div>
-                            <div class="block-profile">
-                                <div class="profile-nickname mt-3 gs_reveal">
-                                    <span class="panggilan signature-font">Qisthi</span>
+
+                            <!-- Pria (kanan) -->
+                            <div class="block-profile right">
+                                <div class="profile-horizontal">
+                                    <div class="profile-nickname mt-3 gs_reveal">
+                                        <div class="nickname-wrapper">
+                                            <span class="panggilan signature-font">Qisthi</span>
+                                        </div>
+                                    </div>
+                                    <div class="profile-picture gs_reveal gs_reveal_fromLeft">
+                                        <div class="img-profile-wrapper">
+                                            <img src="<?= base_url(); ?>images/moment/pria1.jpg" class="img-profile-zoomed" alt="" />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="profile-picture gs_reveal gs_reveal_fromLeft">
-                                    <img
-                                        src="<?= base_url(); ?>/kartu/img/profile-cowo.png"
-                                        class="picture-rounded"
-                                        style="border: 2px solid #ffffff; border-radius: 100%"
-                                        alt="" />
+
+                                <div class="profile-name mt-1 mr-4 gs_reveal">
+                                    <span class="title-content nama-lengkap" style="font-size: 20pt;">Qisthi Iskandar Haqiki</span>
                                 </div>
-                                <div class="profile-name mt-1 gs_reveal">
-                                    <span class="title-content nama-lengkap">Qisthi Iskandar Haqiki S.Kom</span>
-                                </div>
-                                <!-- <a href="https://www.instagram.com/fiqihwew/" target="_blank" class="profile-ig mt-1 btn-ig gs_reveal">
-                                    <img src="img/icon-ig.svg" alt=""> <span style="margin-left: 10px;">fiqihwew</span>
-                                </a> -->
                                 <div class="detail-keluarga gs_reveal">
-                                    <p class="font-dasar">PUTRA PERTAMA DARI</p>
+                                    <p class="font-dasar">PUTRA DARI</p>
                                     <p class="font-dasar">Bapak Ishak Prihatna</p>
                                     <p class="font-dasar">dan Ibu Upi Supriyati</p>
                                 </div>
-                                <div class="daun-melayang gs_reveal gs_reveal_fromRight">
-                                    <img
-                                        src="<?= base_url(); ?>/kartu/img/daun-profile-kb.svg"
-                                        class="img-kb-profile"
-                                        alt="" />
+
+                                <div class="daun-melayang gs_reveal gs_reveal_fromLeft">
+                                    <img src="<?= base_url(); ?>/kartu/img/daun-profile-kiri.svg" class="img-kiri-profile" alt="" />
                                 </div>
+                                <!-- <div class="daun-melayang gs_reveal gs_reveal_fromRight">
+                                    <img src="<?= base_url(); ?>/kartu/img/daun-profile-kanan.svg" class="img-kanan-profile" alt="" />
+                                </div> -->
                             </div>
+
                             <div class="space-daun gs_reveal">
                                 <img src="<?= base_url(); ?>/kartu/img/daun-banyak.svg" class="w-100" alt="" />
                             </div>
@@ -454,9 +699,9 @@
                                     </style>
                                 </div>
                             </div>
-                        </div>
+                        </div><br>
                         <span
-                            class="font-dasar font-black mt-2 gs_reveal"
+                            class="font-dasar font-black mt-5 gs_reveal"
                             style="font-weight: 600">
                             Jl. Margacinta No.91, Cijaura, Kec. Buahbatu, Kota Bandung, Jawa
                             Barat 40287
@@ -472,69 +717,92 @@
                     <div class="content pembates-margin">
                         <img src="<?= base_url(); ?>/kartu/img/content-top.svg" style="width: 100%" alt="" />
                         <div class="content-data">
-                            <span
-                                class="akad-nikah signature-font gs_reveal gs_reveal_fromRight"
-                                style="padding-top: 3rem">
-                                Live Streaming
-                            </span>
-                            <span class="title-content find-ig gs_reveal">
-                                FIND OUR WEDDING VIRTUALLY ON INSTAGRAM
-                            </span>
-                            <a
-                                href="https://www.instagram.com/fitridjunaidizaini/"
-                                target="_blank"
-                                class="btn-white gs_reveal"
-                                id="instagram-id"
-                                style="text-align: center">
-                                <img src="<?= base_url(); ?>/kartu/img/bx_video.svg" alt="" />
-                                <span style="margin-left: 10px">WATCH STREAMING</span>
-                            </a>
-                            <div class="space-daun mt-3 gs_reveal">
-                                <img src="<?= base_url(); ?>/kartu/img/daun-banyak.svg" class="w-100" alt="" />
+                            <div class="block-padding">
+                                <span class="akad-nikah signature-font gs_reveal gs_reveal_fromLeft">
+                                    Wedding Moments
+                                </span><br>
+                                <span class="title-content find-ig gs_reveal">
+                                    SEE OUR BEST MOMENTS
+                                </span>
+                                <!-- Slider -->
+                                <div id="instagram-id" class="swiper mySwiper mb-4">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="<?= base_url(); ?>images/moment/photo1.jpg" class="img-slide-top" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="<?= base_url(); ?>images/moment/photo2.jpg" class="img-slide-top" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="<?= base_url(); ?>images/moment/photo11.jpg" class="img-slide-top" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="<?= base_url(); ?>images/moment/photo13.jpg" class="img-slide-top" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="<?= base_url(); ?>images/moment/photo14.jpg" class="img-slide-top" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="<?= base_url(); ?>images/moment/photo15.jpg" class="img-slide-top" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="<?= base_url(); ?>images/moment/photo4.jpg" class="img-slide-top" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="<?= base_url(); ?>images/moment/photo6.jpg" class="img-slide-top" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="<?= base_url(); ?>images/moment/photo18.jpg" class="img-slide-top" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="<?= base_url(); ?>images/moment/photo19.jpg" class="img-slide-top" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="<?= base_url(); ?>images/moment/photo20.jpg" class="img-slide-top" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="<?= base_url(); ?>images/moment/photo21.jpg" class="img-slide-top" />
+                                        </div>
+                                        <!-- Tambah slide lagi jika ada -->
+                                    </div>
+
+                                    <!-- Navigation Buttons (letaknya DI LUAR swiper-wrapper) -->
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                </div>
+
+
+                                <div class="grid-2-foto">
+                                    <img src="<?= base_url(); ?>images/moment/photo3.jpg" class="img-grid" />
+                                    <img src="<?= base_url(); ?>images/moment/photo16.jpg" class="img-grid" />
+                                </div>
+                                <div class="grid-2-foto">
+                                    <img src="<?= base_url(); ?>images/moment/photo5.jpg" class="img-grid" />
+                                    <img src="<?= base_url(); ?>images/moment/photo17.jpg" class="img-grid" />
+                                </div>
+
+                                <div class="mb-4">
+                                    <img src="<?= base_url(); ?>images/moment/photo7.jpg" class="img-static w-100" />
+                                </div><br><br>
+
+                                <div class="grid-2-foto">
+                                    <img src="<?= base_url(); ?>images/moment/photo8.jpg" class="img-grid" />
+                                    <img src="<?= base_url(); ?>images/moment/photo9.jpg" class="img-grid" />
+                                </div>
+
+                                <div class="mb-4">
+                                    <img src="<?= base_url(); ?>images/moment/photo10.jpg" class="img-static w-100" />
+                                </div>
                             </div>
-                            <!-- <span class="akad-nikah signature-font gs_reveal gs_reveal_fromLeft">
-                                Instagram Effect
-                             </span>
-                            <span class="title-content find-ig gs_reveal">
-                                SHARE YOUR MOMENT WITH OUR INSTAGRAM EFFECT
-                            </span>
-                            <div class="instagram-effects slider gs_reveal gs_reveal_fromLeft">
-                                <div class="block-image">
-                                    <div class="images-place w-100">
-                                        <img src="img/instagrams/slide-1.png" class="w-100" alt="">
-                                    </div>
-                                    <div class="btn-place w-100" style="margin-top:1rem;">
-                                        <a href="https://www.instagram.com/ar/464044251841434/" target="_blank" class="btn-white" style="text-align: center;">
-                                                TRY NOW
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="block-image">
-                                    <div class="images-place w-100">
-                                        <img src="img/instagrams/slide-2.png" class="w-100" alt="">
-                                    </div>
-                                    <div class="btn-place w-100" style="margin-top:1rem;">
-                                        <a href="https://www.instagram.com/ar/5698919336826504/" target="_blank" class="btn-white" style="text-align: center;">
-                                                TRY NOW
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="block-image">
-                                    <div class="images-place w-100">
-                                        <img src="img/instagrams/slide-3.png" class="w-100" alt="">
-                                    </div>
-                                    <div class="btn-place w-100" style="margin-top:1rem;">
-                                        <a href="https://www.instagram.com/ar/1155589031839197/" target="_blank" class="btn-white" style="text-align: center;">
-                                                TRY NOW
-                                        </a>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
-                    <div class="end-content">
-                        <img src="<?= base_url(); ?>/kartu/img/content-top.svg" style="width: 100%" alt="" />
-                    </div>
+
+
+
+
+                    <!-- <div class="end-content">
+                    <img src="<?= base_url(); ?>/kartu/img/content-top.svg" style="width: 100%" alt="" />
+                </div> -->
                     <div class="block-doa mt-2" id="doa-id">
                         <span
                             class="akad-nikah signature-font font-black gs_reveal gs_reveal_fromRight">
@@ -754,10 +1022,28 @@
     <script type="text/javascript" src="<?= base_url(); ?>kartu/js/slick.min.js"></script>
     <script type="text/javascript" src="<?= base_url(); ?>kartu/js/countdown.js"></script>
     <script type="text/javascript" src="<?= base_url(); ?>kartu/js/ohsnap.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
     <script type="text/javascript" src="<?= base_url(); ?>kartu/js/app.js"></script>
     <script type="text/javascript" src="<?= base_url(); ?>kartu/js/snow.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script>
+        new Swiper(".mySwiper", {
+            loop: true,
+            autoplay: {
+                delay: 3000, // Ganti durasi slide (dalam milidetik) jika mau lebih cepat/lambat
+                disableOnInteraction: false // Tetap autoplay meski diklik
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            }
+        });
+    </script>
+
+
 </body>
 
 </html>

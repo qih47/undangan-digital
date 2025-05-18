@@ -59,7 +59,7 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="<?= site_url('show'); ?>" target="_blank" aria-expanded="false">
+                        <a class="sidebar-link" href="<?= site_url('kehadiran'); ?>" target="_blank" aria-expanded="false">
                             <iconify-icon icon="solar:tv-line-duotone"></iconify-icon>
                             <span class="hide-menu">Show Kehadiran</span>
                         </a>
