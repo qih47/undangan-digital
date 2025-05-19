@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
               <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px; font-family: verdana;">SELAMAT DATANG KEPADA</h4>
             </div>
-            <h1 id="namaTamu" class="display-1 text-capitalize text-white mb-3">NAMA</h1>
+            <h1 id="namaTamu" class="display-1 text-capitalize text-white mb-3" style="letter-spacing: 3px; font-family: verdana;font-size:38pt;">NAMA</h1>
             <p id="tamuDari" class="display-1 text-capitalize text-white mb-3" style="letter-spacing: 3px; font-family: verdana;font-size:24pt;">Dari</p>
             <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
               <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px; font-family: verdana;">TERIMA KASIH TELAH HADIR</h4>
