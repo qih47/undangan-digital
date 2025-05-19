@@ -130,31 +130,29 @@ class Invitation extends BaseController
         $model = new InvitationModel();
 
         // Ambil data dari form
-        $nama   = $this->request->getPost('nama');
-        $partner   = $this->request->getPost('partner');
-        // $gender = $this->request->getPost('gender');
-        $dari   = $this->request->getPost('dari');
-        $status = $this->request->getPost('status');
+        $nama    = $this->request->getPost('nama');
+        $partner = $this->request->getPost('partner');
+        $dari    = $this->request->getPost('dari');
+        $status  = $this->request->getPost('status');
 
+        // Buat 1 uniqid yang konsisten
+        $uniqid = uniqid(); // ← hanya sekali
+        $fileName = 'qrcode_' . $uniqid . '.png';
+        $filePath = FCPATH . 'qrcode/' . $fileName;
+        $link     = base_url('invitation/' . $uniqid);
+
+        // Simpan data awal dulu (tanpa QR, link, uniqid)
         $model->insert([
-            'nama'   => $nama,
-            'partner'   => $partner,
-            // 'gender' => $gender,
-            'dari'   => $dari,
-            'status' => $status,
+            'nama'    => $nama,
+            'partner' => $partner,
+            'dari'    => $dari,
+            'status'  => $status,
         ]);
+
         $id = $model->getInsertID();
 
-
-        // Nama file untuk QR code
-        $fileName = 'qrcode_' . uniqid() . '.png';
-        $filePath = FCPATH . 'qrcode/' . $fileName;
-        $dataQr = uniqid();
-        // Buat link berdasarkan ID
-        $link = base_url('invitation/' . $dataQr);
         // Buat QR code
-        $qrCode = new QrCode($link);
-        $qrCode = QrCode::create($dataQr)
+        $qrCode = QrCode::create($uniqid) // isi QR dengan uniqid
             ->setEncoding(new Encoding('UTF-8'))
             ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
             ->setSize(300)
@@ -163,28 +161,25 @@ class Invitation extends BaseController
             ->setForegroundColor(new Color(0, 0, 0))
             ->setBackgroundColor(new Color(255, 255, 255));
 
-
-        // Menulis QR code ke dalam file
         $writer = new PngWriter();
         $result = $writer->write($qrCode);
         $result->saveToFile($filePath);
 
-        // Simpan data undangan ke database
+        // Update data undangan dengan info QR
         if ($id) {
             $model->update($id, [
                 'link'   => $link,
                 'qrcode' => $fileName,
-                'uniqid' => $dataQr,
+                'uniqid' => $uniqid,
             ]);
         }
 
-
         return redirect()->to('/invitation/list')->with('message', '
-    <div class="alert alert-success alert-dismissible bg-success text-white border-0 show flash-alert" role="alert">
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-        <strong>Success - </strong> List Undangan berhasil ditambahkan!
-    </div>
-');
+        <div class="alert alert-success alert-dismissible bg-success text-white border-0 show flash-alert" role="alert">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong>Success - </strong> List Undangan berhasil ditambahkan!
+        </div>
+        ');
     }
 
     // Menampilkan detail undangan berdasarkan ID
