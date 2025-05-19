@@ -207,7 +207,7 @@ class Invitation extends BaseController
         $nama = $this->request->getPost('nama');
         $partner = $this->request->getPost('partner');
 
-        if (!$idInvitation || !$jumlah || !$nama || !$partner) {
+        if (!$idInvitation || !$jumlah || !$nama) {
             return $this->response->setJSON([
                 'status' => false,
                 'message' => 'Beberapa data tidak terisi hadir wajib diisi'
