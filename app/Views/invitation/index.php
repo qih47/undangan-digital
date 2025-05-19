@@ -45,7 +45,9 @@
 
                     .invitation-text {
                         color: white;
-                        max-width: 90%;
+                        max-width: 100%;
+                        /* display: flex; */
+                        justify-content: center;
                     }
 
                     .wedding-of {
@@ -72,6 +74,9 @@
                         font-size: 22px;
                         font-weight: bold;
                         margin: 0 0 10px 0;
+                        text-wrap: nowrap;
+                        width: 100%;
+                        text-align: center;
                     }
 
                     .disclaimer {
@@ -273,11 +278,11 @@
                         <div class="content-data">
                             <img src="<?= base_url(); ?>/kartu/img/scrolls.svg" class="scroll-up-down" alt="" />
                             <span class="title-content gs_reveal" style="font-size: 15px">
-                                OFFICIALLY MENGUNDANG
+                                THE WEDDING OF
                             </span>
                             <span
-                                class="title-content signature-font mobile-title gs_reveal gs_reveal_fromLeft">
-                                <?= esc($undangan) ?>
+                                class="title-content mobile-title gs_reveal gs_reveal_fromLeft couple-names" style="font-size: 30pt;">
+                                GITA & QISTHI
                             </span>
                             <span
                                 class="title-content gs_reveal"
@@ -398,7 +403,7 @@
                                 <div class="wedding-bottom">
                                     <span class="kediaman gs_reveal"> LAZETA CAFE </span>
                                     <span class="kediaman font-dasar gs_reveal">
-                                        Jl. Margacinta No.91, Cijaura, Kec. Buahbatu, Kota
+                                        Jl. Margacinta No.91, Cijaura, Kec. Buahbatu, dari
                                         Bandung, Jawa Barat 40287
                                     </span>
                                     <a href="#maps-id" class="kediaman location gs_reveal">
@@ -699,18 +704,18 @@
                                     </style>
                                 </div>
                             </div>
-                        </div><br>
-                        <span
+                        </div>
+                        <a
                             class="font-dasar font-black mt-5 gs_reveal"
-                            style="font-weight: 600">
-                            Jl. Margacinta No.91, Cijaura, Kec. Buahbatu, Kota Bandung, Jawa
+                            style="font-weight: 600;margin-top: 20px;">
+                            Jl. Margacinta No.91, Cijaura, Kec. Buahbatu, dari Bandung, Jawa
                             Barat 40287
-                        </span>
+                        </a>
                         <a
                             href="https://maps.app.goo.gl/Ud4kT41bb8M545cz7"
                             target="_blank"
                             class="btn-white gs_reveal"
-                            style="text-align: center">
+                            style="text-align: center;margin-top: 20px;">
                             SEE LOCATION
                         </a>
                     </div>
@@ -836,7 +841,7 @@
                                             id="lokasi"
                                             name="lokasi"
                                             placeholder="Asal Daerah"
-                                            value="<?= esc($data['kota']) ?>"
+                                            value="<?= esc($data['dari']) ?>"
                                             required />
                                     </div>
                                 </div>

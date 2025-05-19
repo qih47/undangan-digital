@@ -105,7 +105,7 @@
                                         <th>#</th>
                                         <th>Nama</th>
                                         <th>Partner</th>
-                                        <th>Kota</th>
+                                        <th>Dari</th>
                                         <th>Status</th>
                                         <th>Link</th>
                                         <th>QR Code</th>
@@ -152,10 +152,10 @@
                             </label>
                         </div> -->
                         <div class="form-floating mb-3">
-                            <input type="text" id="kota" name="kota" class="form-control border border-info" placeholder="Password" />
+                            <input type="text" id="dari" name="dari" class="form-control border border-info" placeholder="dari" />
                             <label>
                                 <i class="ti ti-location me-2 fs-4 text-info"></i>
-                                <span class="border-start border-info ps-3">Kota</span>
+                                <span class="border-start border-info ps-3">Dari</span>
                             </label>
                         </div>
                         <div class="form-floating mb-3 ">

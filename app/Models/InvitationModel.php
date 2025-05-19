@@ -10,7 +10,7 @@ class InvitationModel extends Model
 {
     protected $table = 'invitation';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nama', 'partner', 'jumlah', 'kota', 'link', 'qrcode', 'uniqid', 'status'];
+    protected $allowedFields = ['nama', 'partner', 'jumlah', 'dari', 'link', 'qrcode', 'uniqid', 'status'];
 
     public function getDaftarHadir()
     {
@@ -20,7 +20,7 @@ class InvitationModel extends Model
             daftar_hadir.id,
             invitation.nama,
             invitation.partner,
-            invitation.kota,
+            invitation.dari,
             invitation.status AS jenis,
             invitation.link,
             invitation.qrcode,
@@ -57,7 +57,7 @@ class InvitationModel extends Model
     {
         return $this->db
             ->table('daftar_hadir')
-            ->select('daftar_hadir.id, daftar_hadir.id_invitation, invitation.nama, invitation.partner, invitation.kota')
+            ->select('daftar_hadir.id, daftar_hadir.id_invitation, invitation.nama, invitation.partner, invitation.dari')
             ->join('invitation', 'daftar_hadir.id_invitation = invitation.id')
             ->where('invitation.uniqid', "$uniqid")
             ->get()
@@ -68,7 +68,7 @@ class InvitationModel extends Model
     {
         return $this->db
             ->table('daftar_hadir')
-            ->select('daftar_hadir.id, daftar_hadir.id_invitation, daftar_hadir.status, invitation.nama, invitation.partner, invitation.kota')
+            ->select('daftar_hadir.id, daftar_hadir.id_invitation, daftar_hadir.status, invitation.nama, invitation.partner, invitation.dari, invitation.status AS tipe')
             ->join('invitation', 'daftar_hadir.id_invitation = invitation.id')
             ->orderBy('daftar_hadir.id', 'DESC')
             ->get()
@@ -97,7 +97,7 @@ class InvitationModel extends Model
             ->getRow();
     }
 
-    public function simpanKehadiran($idInvitation, $jumlah)
+    public function simpanKehadiran($idInvitation, $jumlah, $nama, $partner)
     {
         $builder = $this->db->table('daftar_hadir');
 
@@ -105,11 +105,16 @@ class InvitationModel extends Model
 
         if ($existing) {
             return $builder->where('id_invitation', $idInvitation)->update([
+                'nama' => $nama,
+                'partner' => $partner,
                 'jumlah' => $jumlah
+
             ]);
         } else {
             return $builder->insert([
                 'id_invitation' => $idInvitation,
+                'nama' => $nama,
+                'partner' => $partner,
                 'jumlah' => $jumlah
             ]);
         }

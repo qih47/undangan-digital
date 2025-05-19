@@ -66,7 +66,7 @@
                                         <th>#</th>
                                         <th>Nama</th>
                                         <th>Jumlah</th>
-                                        <th>Kota</th>
+                                        <th>Dari</th>
                                         <th>Jam Hadir</th>
                                     </tr>
                                 </thead>

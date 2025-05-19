@@ -53,14 +53,14 @@ class Invitation extends BaseController
         $nama   = $this->request->getPost('nama');
         $partner   = $this->request->getPost('partner');
         // $gender = $this->request->getPost('gender');
-        $kota   = $this->request->getPost('kota');
+        $dari   = $this->request->getPost('dari');
         $status = $this->request->getPost('status');
 
         $model->insert([
             'nama'   => $nama,
             'partner'   => $partner,
             // 'gender' => $gender,
-            'kota'   => $kota,
+            'dari'   => $dari,
             'status' => $status,
         ]);
         $id = $model->getInsertID();
@@ -204,16 +204,18 @@ class Invitation extends BaseController
     {
         $idInvitation = $this->request->getPost('id_invitation');
         $jumlah = $this->request->getPost('jumlah');
+        $nama = $this->request->getPost('nama');
+        $partner = $this->request->getPost('partner');
 
-        if (!$idInvitation || !$jumlah) {
+        if (!$idInvitation || !$jumlah || !$nama || !$partner) {
             return $this->response->setJSON([
                 'status' => false,
-                'message' => 'ID dan jumlah hadir wajib diisi'
+                'message' => 'Beberapa data tidak terisi hadir wajib diisi'
             ]);
         }
 
         $model = new \App\Models\InvitationModel();
-        $berhasil = $model->simpanKehadiran($idInvitation, $jumlah);
+        $berhasil = $model->simpanKehadiran($idInvitation, $jumlah, $nama, $partner);
 
         if ($berhasil) {
             return $this->response->setJSON([

@@ -44,7 +44,7 @@ class Ucapan extends BaseController
             $html .= '<div class="data-doa">' .
                 '<div class="name-doa mt-1">' . esc($row["pengirim"]) . '</div>' .
                 '<div class="location-and-present mt-1">' .
-                '<span class="location-name">Di ' . esc($row["kota"]) . ' </span>' .
+                '<span class="location-name">Di ' . esc($row["dari"]) . ' </span>' .
                 $kehadiran .
                 '</div>' .
                 '<div class="doa-value mt-1">" ' . esc($row["ucapan"]) . ' "</div>' .

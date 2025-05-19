@@ -402,7 +402,7 @@ a.bar-icon:hover {
 }
 
 .main-title {
-    padding: 30px;
+    padding: 0px;
     height: 100%;
     display: flex;
     flex-direction: column;

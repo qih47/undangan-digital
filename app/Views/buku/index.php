@@ -56,7 +56,7 @@
                                         <th>#</th>
                                         <th>Nama</th>
                                         <th>Jumlah</th>
-                                        <th>Kota</th>
+                                        <th>Dari</th>
                                         <th>Status</th>
                                         <th>Jam Hadir</th>
                                         <th>Link</th>
@@ -77,7 +77,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalDoaLabel">Ucapan Doa</h5> 
+                <h5 class="modal-title" id="modalDoaLabel">Ucapan Doa</h5>
             </div>
             <div class="modal-body">
                 <p id="isiDoa">Belum ada doa.</p>
