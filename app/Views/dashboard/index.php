@@ -101,7 +101,7 @@
                                                 </span>
                                             </div>
                                             <div class="ms-3">
-                                                <h6 class="fw-semibold mb-2">QGDigital Undangan</h6>
+                                                <h6 class="fw-semibold mb-2">GQ Invitation</h6>
                                                 <p class="mb-0 fs-2">Ucapan</p>
                                             </div>
                                         </div>
