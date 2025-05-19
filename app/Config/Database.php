@@ -28,7 +28,7 @@ class Database extends Config
         'DSN'          => '',
         'hostname'     => 'localhost',
         'username'     => 'root',
-        'password'     => 'mysql',
+        'password'     => '',
         'database'     => 'undangan',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',

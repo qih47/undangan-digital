@@ -45,6 +45,86 @@ class Invitation extends BaseController
     }
 
     // Menyimpan data undangan
+    public function importUndangan()
+    {
+        $file = $this->request->getFile('file_excel');
+
+        if (!$file->isValid()) {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'File tidak valid'
+            ]);
+        }
+
+        $ext = $file->getClientExtension();
+        if (!in_array($ext, ['xls', 'xlsx'])) {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'File harus berformat Excel (.xls/.xlsx)'
+            ]);
+        }
+
+        // Baca file Excel
+        $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReaderForFile($file->getTempName());
+        $reader->setReadDataOnly(true);
+        $spreadsheet = $reader->load($file->getTempName());
+        $worksheet = $spreadsheet->getActiveSheet();
+        $rows = $worksheet->toArray(null, true, true, true);
+
+        $dataInsert = [];
+
+        foreach (array_slice($rows, 1) as $row) {
+            if (empty($row['A'])) continue;
+
+            $uniqid = uniqid(); // ← Buat sekali saja
+            $fileName = 'qrcode_' . $uniqid . '.png';
+            $filePath = FCPATH . 'qrcode/' . $fileName;
+
+            $link = base_url('invitation/' . $uniqid); // ← Dipakai untuk QR dan database
+
+            // Buat QR code dari uniqid yang sama
+            $qrCode = QrCode::create($uniqid)
+                ->setEncoding(new Encoding('UTF-8'))
+                ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+                ->setSize(300)
+                ->setMargin(10)
+                ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
+                ->setForegroundColor(new Color(0, 0, 0))
+                ->setBackgroundColor(new Color(255, 255, 255));
+
+            $writer = new PngWriter();
+            $result = $writer->write($qrCode);
+            $result->saveToFile($filePath);
+
+            $dataInsert[] = [
+                'nama'    => $row['A'] ?? null,
+                'partner' => $row['B'] ?? null,
+                'dari'    => $row['C'] ?? null,
+                'link'    => $link,
+                'qrcode'  => $fileName,
+                'uniqid'  => $uniqid,
+                'status'  => $row['D'] ?? 'Friend',
+            ];
+        }
+
+        if (empty($dataInsert)) {
+            return $this->response->setJSON([
+                'status' => false,
+                'message' => 'Tidak ada data yang bisa diimpor'
+            ]);
+        }
+
+        $model = new \App\Models\InvitationModel();
+        $model->insertBatch($dataInsert);
+
+        return $this->response->setJSON([
+            'status' => true,
+            'message' => 'Data undangan berhasil diimpor',
+            'jumlah' => count($dataInsert)
+        ]);
+    }
+
+
     public function simpan()
     {
         $model = new InvitationModel();

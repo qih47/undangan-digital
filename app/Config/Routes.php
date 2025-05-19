@@ -25,4 +25,5 @@ $routes->get('/invitation/selamat-datang', 'Invitation::cek_tamu_baru');
 $routes->get('/buku/', 'Invitation::viewBukuTamu');
 $routes->get('/kehadiran', 'Invitation::showKehadiran');
 $routes->post('/invitation/simpan', 'Invitation::simpan');
+$routes->post('/invitation/import-undangan', 'Invitation::importUndangan');
 $routes->get('/invitation/(:alphanum)', 'Invitation::uniqidInvitation/$1');

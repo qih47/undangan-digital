@@ -96,8 +96,16 @@
             <div class="col-lg-9 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title mb-4">Buku List Undangan</h5>
-                        <p class="mb-0">GQ Invitation List Undangan</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title mb-0">Buku List Undangan</h5>
+
+                            <div class="ms-auto">
+                                <button id="btn-import" name="btn-import" class="btn btn-info hstack gap-2">
+                                    <i class="ti ti-cloud me-2 fs-4"></i>Import
+                                </button>
+                            </div>
+                        </div>
+
                         <div class="table-responsive">
                             <table id="tabel_list_undangan" class="table table-striped table-bordered display text-nowrap mt-3">
                                 <thead>
