@@ -18,8 +18,8 @@ class InvitationModel extends Model
             ->table('daftar_hadir')
             ->select("
             daftar_hadir.id,
-            invitation.nama,
-            invitation.partner,
+            daftar_hadir.nama,
+            daftar_hadir.partner,
             invitation.dari,
             invitation.status AS jenis,
             invitation.link,
@@ -68,7 +68,7 @@ class InvitationModel extends Model
     {
         return $this->db
             ->table('daftar_hadir')
-            ->select('daftar_hadir.id, daftar_hadir.id_invitation, daftar_hadir.status, invitation.nama, invitation.partner, invitation.dari, invitation.status AS tipe')
+            ->select('daftar_hadir.id, daftar_hadir.id_invitation, daftar_hadir.status, daftar_hadir.nama, daftar_hadir.partner, invitation.dari, invitation.status AS tipe')
             ->join('invitation', 'daftar_hadir.id_invitation = invitation.id')
             ->orderBy('daftar_hadir.id', 'DESC')
             ->get()
@@ -101,22 +101,11 @@ class InvitationModel extends Model
     {
         $builder = $this->db->table('daftar_hadir');
 
-        $existing = $builder->where('id_invitation', $idInvitation)->get()->getRow();
-
-        if ($existing) {
-            return $builder->where('id_invitation', $idInvitation)->update([
-                'nama' => $nama,
-                'partner' => $partner,
-                'jumlah' => $jumlah
-
-            ]);
-        } else {
-            return $builder->insert([
-                'id_invitation' => $idInvitation,
-                'nama' => $nama,
-                'partner' => $partner,
-                'jumlah' => $jumlah
-            ]);
-        }
+        return $builder->insert([
+            'id_invitation' => $idInvitation,
+            'nama' => $nama,
+            'partner' => $partner,
+            'jumlah' => $jumlah
+        ]);
     }
 }
