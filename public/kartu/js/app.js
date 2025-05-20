@@ -38,6 +38,7 @@ $(document).ready(function () {
     var csrfName = $("#csrf_token").attr("name");
     var csrfHash = $("#csrf_token").val();
     var nama = $("#nama").val();
+    var lokasi = $("#lokasi").val();
 
     if (!id_invitation) {
       ohSnap("ID undangan tidak ditemukan", { color: "red" });
@@ -54,6 +55,7 @@ $(document).ready(function () {
         data: {
           id_invitation: id_invitation,
           nama: nama,
+          lokasi: lokasi,
           kehadiran: kehadiran,
           ucapan: ucapan,
           [csrfName]: csrfHash,

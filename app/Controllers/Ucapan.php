@@ -44,7 +44,7 @@ class Ucapan extends BaseController
             $html .= '<div class="data-doa">' .
                 '<div class="name-doa mt-1">' . esc($row["pengirim"]) . '</div>' .
                 '<div class="location-and-present mt-1">' .
-                '<span class="location-name">Di ' . esc($row["dari"]) . ' </span>' .
+                '<span class="location-name">Di ' . esc($row["lokasi"]) . ' </span>' .
                 $kehadiran .
                 '</div>' .
                 '<div class="doa-value mt-1">" ' . esc($row["ucapan"]) . ' "</div>' .
@@ -63,16 +63,18 @@ class Ucapan extends BaseController
 
         $id_invitation = $this->request->getPost('id_invitation');
         $nama = $this->request->getPost('nama');
+        $lokasi = $this->request->getPost('lokasi');
         $kehadiran = $this->request->getPost('kehadiran');
         $ucapan = $this->request->getPost('ucapan');
 
-        if (!$id_invitation || !$nama || !$kehadiran || !$ucapan) {
+        if (!$id_invitation || !$nama || !$lokasi || !$kehadiran || !$ucapan) {
             return $this->response->setStatusCode(400)->setBody('Data tidak lengkap!');
         }
 
         $data = [
             'id_invitation' => $id_invitation,
             'nama' => $nama,
+            'lokasi' => $lokasi,
             'kehadiran'     => $kehadiran,
             'ucapan'        => $ucapan,
             'time_created'   => date('Y-m-d H:i:s'),

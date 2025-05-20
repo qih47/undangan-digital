@@ -826,7 +826,7 @@
                                             id="nama"
                                             name="nama"
                                             placeholder="Nama Anda"
-                                            value="<?= esc($data['nama']) ?>"
+                                            value=""
                                             required />
                                     </div>
                                 </div>
@@ -841,7 +841,7 @@
                                             id="lokasi"
                                             name="lokasi"
                                             placeholder="Asal Daerah"
-                                            value="<?= esc($data['dari']) ?>"
+                                            value=""
                                             required />
                                     </div>
                                 </div>
