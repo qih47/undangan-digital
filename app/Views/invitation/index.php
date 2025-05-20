@@ -31,7 +31,6 @@
                         position: relative;
                         width: 100%;
                         height: 100%;
-                        background: url('your-background-image.jpg') no-repeat center center/cover;
                         display: flex;
                         align-items: center;
                         /* Vertikal Tengah */
@@ -40,7 +39,7 @@
                         text-align: center;
                         padding: 40px;
                         box-sizing: border-box;
-                        margin-top: 150px;
+                        margin-top: 170px;
                     }
 
                     .invitation-text {
@@ -272,7 +271,7 @@
             </div>
             <div class="mobile-separator" id="mobile-scroll">
                 <div class="welcome">
-                    <img src="<?= base_url(); ?>images/moment/photo20.jpg" style="width: 100%" />
+                    <img src="<?= base_url(); ?>images/moment/photo20.JPG" style="width: 100%" />
                     <div class="content">
                         <img src="<?= base_url(); ?>/kartu/img/content-top.svg" class="background-top" alt="" />
                         <div class="content-data">
@@ -597,7 +596,7 @@
                                 <div class="profile-horizontal">
                                     <div class="profile-picture gs_reveal gs_reveal_fromLeft">
                                         <div class="img-profile-wrapper">
-                                            <img src="<?= base_url(); ?>images/moment/wanita1.jpg" class="img-profile-zoomed" alt="" />
+                                            <img src="<?= base_url(); ?>images/moment/wanita1.JPG" class="img-profile-zoomed" alt="" />
                                         </div>
                                     </div>
                                     <div class="profile-nickname mt-3 gs_reveal">
@@ -639,7 +638,7 @@
                                     </div>
                                     <div class="profile-picture gs_reveal gs_reveal_fromLeft">
                                         <div class="img-profile-wrapper">
-                                            <img src="<?= base_url(); ?>images/moment/pria1.jpg" class="img-profile-zoomed" alt="" />
+                                            <img src="<?= base_url(); ?>images/moment/pria1.JPG" class="img-profile-zoomed" alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -733,40 +732,40 @@
                                 <div id="instagram-id" class="swiper mySwiper mb-4">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
-                                            <img src="<?= base_url(); ?>images/moment/photo1.jpg" class="img-slide-top" />
+                                            <img src="<?= base_url(); ?>images/moment/photo1.JPG" class="img-slide-top" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="<?= base_url(); ?>images/moment/photo2.jpg" class="img-slide-top" />
+                                            <img src="<?= base_url(); ?>images/moment/photo2.JPG" class="img-slide-top" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="<?= base_url(); ?>images/moment/photo11.jpg" class="img-slide-top" />
+                                            <img src="<?= base_url(); ?>images/moment/photo11.JPG" class="img-slide-top" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="<?= base_url(); ?>images/moment/photo13.jpg" class="img-slide-top" />
+                                            <img src="<?= base_url(); ?>images/moment/photo13.JPG" class="img-slide-top" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="<?= base_url(); ?>images/moment/photo14.jpg" class="img-slide-top" />
+                                            <img src="<?= base_url(); ?>images/moment/photo14.JPG" class="img-slide-top" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="<?= base_url(); ?>images/moment/photo15.jpg" class="img-slide-top" />
+                                            <img src="<?= base_url(); ?>images/moment/photo15.JPG" class="img-slide-top" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="<?= base_url(); ?>images/moment/photo4.jpg" class="img-slide-top" />
+                                            <img src="<?= base_url(); ?>images/moment/photo4.JPG" class="img-slide-top" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="<?= base_url(); ?>images/moment/photo6.jpg" class="img-slide-top" />
+                                            <img src="<?= base_url(); ?>images/moment/photo6.JPG" class="img-slide-top" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="<?= base_url(); ?>images/moment/photo18.jpg" class="img-slide-top" />
+                                            <img src="<?= base_url(); ?>images/moment/photo18.JPG" class="img-slide-top" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="<?= base_url(); ?>images/moment/photo19.jpg" class="img-slide-top" />
+                                            <img src="<?= base_url(); ?>images/moment/photo19.JPG" class="img-slide-top" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="<?= base_url(); ?>images/moment/photo20.jpg" class="img-slide-top" />
+                                            <img src="<?= base_url(); ?>images/moment/photo20.JPG" class="img-slide-top" />
                                         </div>
                                         <div class="swiper-slide">
-                                            <img src="<?= base_url(); ?>images/moment/photo21.jpg" class="img-slide-top" />
+                                            <img src="<?= base_url(); ?>images/moment/photo21.JPG" class="img-slide-top" />
                                         </div>
                                         <!-- Tambah slide lagi jika ada -->
                                     </div>
@@ -778,25 +777,25 @@
 
 
                                 <div class="grid-2-foto">
-                                    <img src="<?= base_url(); ?>images/moment/photo3.jpg" class="img-grid" />
-                                    <img src="<?= base_url(); ?>images/moment/photo16.jpg" class="img-grid" />
+                                    <img src="<?= base_url(); ?>images/moment/photo3.JPG" class="img-grid" />
+                                    <img src="<?= base_url(); ?>images/moment/photo16.JPG" class="img-grid" />
                                 </div>
                                 <div class="grid-2-foto">
-                                    <img src="<?= base_url(); ?>images/moment/photo5.jpg" class="img-grid" />
-                                    <img src="<?= base_url(); ?>images/moment/photo17.jpg" class="img-grid" />
+                                    <img src="<?= base_url(); ?>images/moment/photo5.JPG" class="img-grid" />
+                                    <img src="<?= base_url(); ?>images/moment/photo17.JPG" class="img-grid" />
                                 </div>
 
                                 <div class="mb-4">
-                                    <img src="<?= base_url(); ?>images/moment/photo7.jpg" class="img-static w-100" />
+                                    <img src="<?= base_url(); ?>images/moment/photo7.JPG" class="img-static w-100" />
                                 </div><br><br>
 
                                 <div class="grid-2-foto">
-                                    <img src="<?= base_url(); ?>images/moment/photo8.jpg" class="img-grid" />
-                                    <img src="<?= base_url(); ?>images/moment/photo9.jpg" class="img-grid" />
+                                    <img src="<?= base_url(); ?>images/moment/photo8.JPG" class="img-grid" />
+                                    <img src="<?= base_url(); ?>images/moment/photo9.JPG" class="img-grid" />
                                 </div>
 
                                 <div class="mb-4">
-                                    <img src="<?= base_url(); ?>images/moment/photo10.jpg" class="img-static w-100" />
+                                    <img src="<?= base_url(); ?>images/moment/photo10.JPG" class="img-static w-100" />
                                 </div>
                             </div>
                         </div>
