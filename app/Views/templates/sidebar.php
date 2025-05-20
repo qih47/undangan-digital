@@ -20,28 +20,9 @@
                   position-relative
                 " id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Qisthi Iskandar H</a>
                     <div class="dropdown-menu animated flipInY" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item d-flex gap-2" href="javascript:void(0)"><i data-feather="user"
-                                class="feather-sm text-info "></i>
-                            My Profile</a>
-                        <a class="dropdown-item d-flex gap-2" href="javascript:void(0)"><i data-feather="credit-card"
-                                class="feather-sm text-info "></i>
-                            My Notes</a>
-                        <a class="dropdown-item d-flex gap-2" href="javascript:void(0)"><i data-feather="mail"
-                                class="feather-sm text-success "></i>
-                            Inbox</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item d-flex gap-2" href="javascript:void(0)"><i data-feather="settings"
-                                class="feather-sm text-warning "></i>
-                            Account Setting</a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item d-flex gap-2" href="<?= base_url('logout'); ?>"><i data-feather="log-out"
                                 class="feather-sm text-danger "></i>
                             Logout</a>
-                        <div class="dropdown-divider"></div>
-                        <div class="px-3 py-2">
-                            <a href="javascript:void(0)" class="btn d-block w-100 btn-info rounded-pill">View
-                                Profile</a>
-                        </div>
                     </div>
                 </div>
             </div>
