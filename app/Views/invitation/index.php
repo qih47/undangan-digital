@@ -578,13 +578,13 @@
                                     /* Geser posisi gambar pria ke kanan */
                                     .block-profile.left .img-profile-wrapper {
                                         justify-content: flex-end;
-                                        padding-right: 0px;
+                                        padding-left: 40px !important;
                                     }
 
                                     /* Geser posisi gambar wanita ke kiri */
                                     .block-profile.right .img-profile-wrapper {
                                         justify-content: flex-start;
-                                        padding-left: 65px;
+                                        padding-left: 55px !important;
                                     }
 
                                     .padding-tambahan {
