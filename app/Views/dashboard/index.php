@@ -1,5 +1,7 @@
 <?= $this->extend('templates/index'); ?>
 <?= $this->section('page-content'); ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
 <div class="body-wrapper-inner">
     <div class="container-fluid">
         <div class="font-weight-medium shadow-none position-relative overflow-hidden mb-7">
@@ -57,6 +59,107 @@
                                     <i class="ti ti-barcode me-2 fs-4 text-info"></i>
                                     <span class="border-start border-info ps-3">Scan di sini</span>
                                 </label>
+                                <!-- <input type="hidden" id="scanQR" />
+                                <div id="reader" style="width:300px;"></div> -->
+                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                                <script>
+                                    const channel = new BroadcastChannel("scanChannel");
+
+                                    channel.onmessage = async (event) => {
+                                        const {
+                                            uniqid
+                                        } = event.data;
+
+                                        try {
+                                            const response = await fetch("/invitation/get-tamu", {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type": "application/x-www-form-urlencoded"
+                                                },
+                                                body: `uniqid=${encodeURIComponent(uniqid)}`,
+                                            });
+
+                                            const result = await response.json();
+
+                                            if (result.status) {
+                                                const data = result.data;
+
+                                                Swal.fire({
+                                                    title: "Selamat Datang",
+                                                    html: `
+            <p><strong>${data.nama} & ${data.partner}</strong></p>
+            <p>Dari: ${data.dari}</p>
+            <input id="namaTamu" type="text" class="swal2-input" value="${data.nama}" />
+            <input id="partnerTamu" type="text" class="swal2-input" value="${data.partner}" />
+            <input id="jumlahHadir" type="number" class="swal2-input" placeholder="Jumlah Hadir" min="1" />
+          `,
+                                                    imageUrl: "/images/logos/tittleLogo.png",
+                                                    imageWidth: 100,
+                                                    imageHeight: 100,
+                                                    showCancelButton: true,
+                                                    confirmButtonText: "Konfirmasi",
+                                                    preConfirm: () => {
+                                                        const jumlah = document.getElementById("jumlahHadir").value;
+                                                        const nama = document.getElementById("namaTamu").value.trim();
+                                                        const partner = document.getElementById("partnerTamu").value.trim();
+
+                                                        if (!jumlah || parseInt(jumlah) < 1) {
+                                                            Swal.showValidationMessage("Jumlah hadir minimal 1");
+                                                        }
+                                                        if (nama === "") {
+                                                            Swal.showValidationMessage("Nama tidak boleh kosong");
+                                                        }
+
+                                                        return {
+                                                            jumlah,
+                                                            nama,
+                                                            partner
+                                                        };
+                                                    },
+                                                }).then(async (swalResult) => {
+                                                    if (swalResult.isConfirmed) {
+                                                        const {
+                                                            jumlah,
+                                                            nama,
+                                                            partner
+                                                        } = swalResult.value;
+
+                                                        const saveRes = await fetch("/invitation/simpan-kehadiran", {
+                                                            method: "POST",
+                                                            headers: {
+                                                                "Content-Type": "application/x-www-form-urlencoded",
+                                                            },
+                                                            body: `id_invitation=${data.id}&jumlah=${jumlah}&nama=${encodeURIComponent(
+                nama
+              )}&partner=${encodeURIComponent(partner)}`,
+                                                        });
+
+                                                        const saveData = await saveRes.json();
+
+                                                        if (saveData.status) {
+                                                            Swal.fire({
+                                                                title: "Tersimpan!",
+                                                                text: saveData.message,
+                                                                icon: "success",
+                                                                showConfirmButton: false,
+                                                                timer: 2000,
+                                                            });
+                                                            $("#tabel_daftar_hadir").DataTable().ajax.reload(null, false);
+                                                        } else {
+                                                            Swal.fire("Gagal", saveData.message, "error");
+                                                        }
+                                                    }
+                                                });
+                                            } else {
+                                                Swal.fire("Tamu tidak ditemukan", result.message, "error");
+                                            }
+                                        } catch (err) {
+                                            Swal.fire("Error", "Gagal memproses QR", "error");
+                                        }
+                                    };
+                                </script>
+
                             </div>
                         </div>
                         <div class="table-responsive">

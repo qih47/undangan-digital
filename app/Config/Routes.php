@@ -27,3 +27,6 @@ $routes->get('/kehadiran', 'Invitation::showKehadiran');
 $routes->post('/invitation/simpan', 'Invitation::simpan');
 $routes->post('/invitation/import-undangan', 'Invitation::importUndangan');
 $routes->get('/invitation/(:alphanum)', 'Invitation::uniqidInvitation/$1');
+// app/Config/Routes.php
+$routes->get('scanner', 'Scanner::index');
+$routes->post('scanner/validasi', 'Scanner::validasi');
