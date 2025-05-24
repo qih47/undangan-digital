@@ -1,7 +1,5 @@
 <?= $this->extend('templates/index'); ?>
 <?= $this->section('page-content'); ?>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://unpkg.com/html5-qrcode"></script>
 <div class="body-wrapper-inner">
     <div class="container-fluid">
         <div class="font-weight-medium shadow-none position-relative overflow-hidden mb-7">
@@ -44,6 +42,8 @@
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
         <div class="row">
             <!-- Kolom DataTable -->
             <div class="col-lg-8 mb-4">
@@ -59,11 +59,7 @@
                                     <i class="ti ti-barcode me-2 fs-4 text-info"></i>
                                     <span class="border-start border-info ps-3">Scan di sini</span>
                                 </label>
-                                <!-- <input type="hidden" id="scanQR" />
-                                <div id="reader" style="width:300px;"></div> -->
-                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-                                <script>
+                                                         <script>
                                     const channel = new BroadcastChannel("scanChannel");
 
                                     channel.onmessage = async (event) => {
@@ -159,7 +155,6 @@
                                         }
                                     };
                                 </script>
-
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -257,4 +252,5 @@
         </div>
     </div>
 </div>
+
 <?= $this->endSection(); ?>

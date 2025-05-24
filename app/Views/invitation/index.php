@@ -574,7 +574,7 @@
                                         font-size: 1rem;
                                     }
 
-                                    /* Geser posisi gambar pria ke kanan */
+                                        /* Geser posisi gambar pria ke kanan */
                                     .block-profile.left .img-profile-wrapper {
                                         justify-content: flex-end;
                                         padding-left: 40px !important;

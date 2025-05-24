@@ -1,6 +1,6 @@
 <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 
-<div id="reader" style="width:300px;"></div>
+<div id="reader" style="width:800px;display:flex;align-item:center;"></div>
 <div id="hasil-scan" class="mt-2"></div>
 
 <script>
