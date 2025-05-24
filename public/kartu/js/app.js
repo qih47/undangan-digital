@@ -115,6 +115,11 @@ $("#click-instagram").click(function () {
   linkDate.scrollIntoView();
 });
 
+$("#click-story").click(function () {
+  let linkDate = document.getElementById("story-id");
+  linkDate.scrollIntoView();
+});
+
 $("#click-doa").click(function () {
   let linkDate = document.getElementById("doa-id");
   linkDate.scrollIntoView();
@@ -343,6 +348,23 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     onLeaveBack: function () {
       changeBackground(".icon-insta", "");
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: "#story-id",
+    scroller: "#mobile-scroll",
+    onEnter: function () {
+      changeBackground(".icon-story", "active");
+    },
+    onEnterBack: function () {
+      changeBackground(".icon-story", "active");
+    },
+    onLeave: function () {
+      changeBackground(".icon-story", "");
+    },
+    onLeaveBack: function () {
+      changeBackground(".icon-story", "");
     },
   });
 

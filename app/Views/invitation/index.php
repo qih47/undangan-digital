@@ -239,12 +239,12 @@
                                 </a>
                             </li>
                             <li>
-                                <a id="click-maps" class="bar-icon icon-location">
-                                    <img src="<?= base_url(); ?>/kartu/img/icon-location.svg" class="img-off" alt="" />
+                                <a id="click-story" class="bar-icon icon-story">
+                                    <img src="<?= base_url(); ?>/kartu/img/icon-story.png" class="img-off" alt="" width="20" height="20" />
                                     <img
-                                        src="<?= base_url(); ?>/kartu/img/icon-location-active.svg"
+                                        src="<?= base_url(); ?>/kartu/img/icon-story.png"
                                         class="img-active"
-                                        alt="" />
+                                        alt="" width="20" height="20" />
                                 </a>
                             </li>
                             <li>
@@ -252,6 +252,15 @@
                                     <img src="<?= base_url(); ?>/kartu/img/icon-insta.svg" class="img-off" alt="" />
                                     <img
                                         src="<?= base_url(); ?>/kartu/img/icon-insta-active.svg"
+                                        class="img-active"
+                                        alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a id="click-maps" class="bar-icon icon-location">
+                                    <img src="<?= base_url(); ?>/kartu/img/icon-location.svg" class="img-off" alt="" />
+                                    <img
+                                        src="<?= base_url(); ?>/kartu/img/icon-location-active.svg"
                                         class="img-active"
                                         alt="" />
                                 </a>
@@ -574,7 +583,7 @@
                                         font-size: 1rem;
                                     }
 
-                                        /* Geser posisi gambar pria ke kanan */
+                                    /* Geser posisi gambar pria ke kanan */
                                     .block-profile.left .img-profile-wrapper {
                                         justify-content: flex-end;
                                         padding-left: 40px !important;
@@ -671,53 +680,94 @@
                     <!-- <div class="img-bawah w-100 gs_reveal">
                         <img src="img/img-bawah.jpg" class="w-100" alt="">
                     </div> -->
-                    <div class="google-maps gs_reveal gs_reveal_fromRight" id="maps-id">
-                        <div class="cover-maps">
-                            <div class="mapouter">
-                                <div class="gmap_canvas">
-                                    <iframe
-                                        width="376"
-                                        height="400"
-                                        id="gmap_canvas"
-                                        src="https://maps.google.com/maps?q=Lazeta%20Cafe%20Margacinta%20Bandung&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                        frameborder="0"
-                                        scrolling="no"
-                                        marginheight="0"
-                                        marginwidth="0"></iframe>
-                                    <br />
-                                    <style>
-                                        .mapouter {
-                                            position: relative;
-                                            text-align: right;
-                                            height: 400px;
-                                            width: 376px;
-                                        }
-                                    </style><a href="https://www.embedgooglemap.net">google maps embed iframe generator</a>
-                                    <style>
-                                        .gmap_canvas {
-                                            overflow: hidden;
-                                            background: none !important;
-                                            height: 400px;
-                                            width: 376px;
-                                        }
-                                    </style>
+                    <style>
+                        .timeline {
+                            position: relative;
+                            margin: 2rem auto;
+                            padding-left: 40px;
+                            padding-right: 20px;
+                            max-width: 600px;
+                            border-left: 2px solid #9c854d;
+                        }
+
+                        .timeline-item {
+                            position: relative;
+                            margin-bottom: 1.5rem;
+                            padding-left: 15px;
+                        }
+
+                        .timeline-marker {
+                            width: 12px;
+                            height: 12px;
+                            background-color: #9c854d;
+                            border-radius: 50%;
+                            position: absolute;
+                            left: -26px;
+                            top: 4px;
+                        }
+
+                        .timeline-content h5 {
+                            margin: 0 0 4px;
+                            font-size: 0.95rem;
+                            font-weight: bold;
+                            color: #2f4f4f;
+                        }
+
+                        .timeline-content p {
+                            margin: 0;
+                            color: #444;
+                            font-size: 0.85rem;
+                            line-height: 1.4;
+                            text-align: justify;
+                        }
+                    </style>
+
+
+
+                    <div class="love-story gs_reveal gs_reveal_fromRight" id="story-id">
+                        <div class="block-padding">
+                            <div class="img-bawah img-static w-100 gs_reveal">
+                                <img src="<?= base_url(); ?>/images/moment/story.JPG" style="width: 100%" alt="" />
+                            </div>
+                        </div>
+
+                        <span class="akad-nikah signature-font font-black gs_reveal gs_reveal_fromRight">
+                            Love Story
+                        </span>
+
+                        <div class="timeline mt-3">
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h5><strong>First Meet (2021)</strong></h5>
+                                    <p>Tahun 2021 kami pertama kali bertemu di tempat kerja yang sama, saat itu kami hanya berteman biasa.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h5><strong>Relationship (2024)</strong></h5>
+                                    <p>Pada tanggal 16 Juni 2024 kami mulai menjalin hubungan sebagai sepasang kekasih.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h5><strong>Engagement (2025)</strong></h5>
+                                    <p>Tahun ini kami memutuskan untuk bertunangan pada 26 Januari 2025.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h5><strong>Married (2025)</strong></h5>
+                                    <p>Kami memutuskan untuk mengikat janji suci pernikahan pada 28 Juni 2025.</p>
                                 </div>
                             </div>
                         </div>
-                        <a
-                            class="font-dasar font-black mt-5 gs_reveal"
-                            style="font-weight: 600;margin-top: 20px;">
-                            Jl. Margacinta No.91, Cijaura, Kec. Buahbatu, dari Bandung, Jawa
-                            Barat 40287
-                        </a>
-                        <a
-                            href="https://maps.app.goo.gl/Ud4kT41bb8M545cz7"
-                            target="_blank"
-                            class="btn-white gs_reveal"
-                            style="text-align: center;margin-top: 20px;">
-                            SEE LOCATION
-                        </a>
                     </div>
+
+
                     <div class="content pembates-margin">
                         <img src="<?= base_url(); ?>/kartu/img/content-top.svg" style="width: 100%" alt="" />
                         <div class="content-data">
@@ -800,14 +850,58 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-                    <!-- <div class="end-content">
-                    <img src="<?= base_url(); ?>/kartu/img/content-top.svg" style="width: 100%" alt="" />
-                </div> -->
-                    <div class="block-doa mt-2" id="doa-id">
+                    <div class="end-content">
+                        <img src="<?= base_url(); ?>/kartu/img/content-top.svg" class="top-location" alt="" />
+                    </div>
+                    <div class="google-maps gs_reveal gs_reveal_fromRight" id="maps-id">
+                        <div class="cover-maps">
+                            <div class="mapouter">
+                                <div class="gmap_canvas">
+                                    <iframe
+                                        width="376"
+                                        height="400"
+                                        id="gmap_canvas"
+                                        src="https://maps.google.com/maps?q=Lazeta%20Cafe%20Margacinta%20Bandung&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                        frameborder="0"
+                                        scrolling="no"
+                                        marginheight="0"
+                                        marginwidth="0"></iframe>
+                                    <br />
+                                    <style>
+                                        .mapouter {
+                                            position: relative;
+                                            text-align: right;
+                                            height: 400px;
+                                            width: 376px;
+                                        }
+                                    </style><a href="https://www.embedgooglemap.net">google maps embed iframe generator</a>
+                                    <style>
+                                        .gmap_canvas {
+                                            overflow: hidden;
+                                            background: none !important;
+                                            height: 400px;
+                                            width: 376px;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                        </div>
+                        <a
+                            class="font-dasar font-black mt-5 gs_reveal"
+                            style="font-weight: 600;margin-top: 20px;">
+                            Jl. Margacinta No.91, Cijaura, Kec. Buahbatu, dari Bandung, Jawa
+                            Barat 40287
+                        </a>
+                        <a
+                            href="https://maps.app.goo.gl/Ud4kT41bb8M545cz7"
+                            target="_blank"
+                            class="btn-white gs_reveal"
+                            style="text-align: center;margin-top: 20px;">
+                            SEE LOCATION
+                        </a>
+                    </div>
+                    <div class="block-doa mt-5" id="doa-id">
+                        <img src="<?= base_url(); ?>/kartu/img/content-top.svg" style="width: 100%" alt="" />
                         <span
                             class="akad-nikah signature-font font-black gs_reveal gs_reveal_fromRight">
                             Kirim Doa
@@ -942,7 +1036,8 @@
                     <div class="bank-detail">
                         <span class="title aniModal"> BNI </span>
                         <span class="bank-title aniModal">
-                            3410637811 <img src="<?= base_url(); ?>/kartu/img/copy.png" alt="" />
+                            <span id="nomorRek">1174769311</span>
+                            <img id="copy" src="<?= base_url(); ?>/kartu/img/copy.png" alt="Copy" style="cursor:pointer;" />
                         </span>
                         <span class="bank-name aniModal"> Gita Laras Rohatina </span>
                     </div>
@@ -954,11 +1049,34 @@
                     <div class="bank-detail">
                         <span class="title aniModal"> Mandiri </span>
                         <span class="bank-title aniModal">
-                            1671270172 <img src="<?= base_url(); ?>/kartu/img/copy.png" alt="" />
+                            <span id="nomorRek-1">1300026681257</span>
+                            <img id="copy-1" src="<?= base_url(); ?>/kartu/img/copy.png" alt="Copy" style="cursor:pointer;" />
                         </span>
                         <span class="bank-name aniModal"> Qisthi Iskandar H </span>
                     </div>
                 </div>
+                <script>
+                    document.getElementById('copy').addEventListener('click', function() {
+                        const textToCopy = document.getElementById('nomorRek').innerText;
+
+                        navigator.clipboard.writeText(textToCopy).then(function() {
+                            alert('Teks berhasil disalin: ' + textToCopy);
+                        }, function(err) {
+                            alert('Gagal menyalin teks');
+                            console.error(err);
+                        });
+                    });
+                    document.getElementById('copy-1').addEventListener('click', function() {
+                        const textToCopy = document.getElementById('nomorRek-1').innerText;
+
+                        navigator.clipboard.writeText(textToCopy).then(function() {
+                            alert('Teks berhasil disalin: ' + textToCopy);
+                        }, function(err) {
+                            alert('Gagal menyalin teks');
+                            console.error(err);
+                        });
+                    });
+                </script>
                 <!-- <div class="choosen-bank">
                     <div class="bank-img aniModal">
                         <img src="img/bank/mandiri.png" alt="">
