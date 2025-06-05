@@ -207,7 +207,7 @@
                 <audio
                     id="background_music"
                     loop="loop"
-                    src="<?= base_url(); ?>/kartu/music/Let_It_Be_Me.mp3"></audio>
+                    src="<?= base_url(); ?>/kartu/music/music.mp3"></audio>
                 <div id="pay" class="float">
                     <a
                         id="pay-button"
