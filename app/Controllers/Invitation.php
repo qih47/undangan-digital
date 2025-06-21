@@ -304,4 +304,26 @@ class Invitation extends BaseController
             ]);
         }
     }
+
+    public function searchInvitation()
+    {
+        $term = htmlspecialchars(trim($this->request->getGet('q')), ENT_QUOTES, 'UTF-8');
+        $model = new \App\Models\InvitationModel();
+
+        $data = $model
+            ->like('nama', $term)
+            ->orLike('partner', $term)
+            ->select('id, nama, partner, uniqid')
+            ->findAll(10);
+
+        $results = [];
+        foreach ($data as $row) {
+            $results[] = [
+                'id'   => $row['uniqid'], // ← ini yang dipakai di fetch ke get-tamu
+                'text' => $row['nama'] . ($row['partner'] ? ' & ' . $row['partner'] : ''),
+            ];
+        }
+
+        return $this->response->setJSON($results);
+    }
 }

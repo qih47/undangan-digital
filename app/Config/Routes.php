@@ -26,7 +26,7 @@ $routes->get('/buku/', 'Invitation::viewBukuTamu');
 $routes->get('/kehadiran', 'Invitation::showKehadiran');
 $routes->post('/invitation/simpan', 'Invitation::simpan');
 $routes->post('/invitation/import-undangan', 'Invitation::importUndangan');
+$routes->get('invitation/cariundangan', 'Invitation::searchInvitation');
 $routes->get('/invitation/(:alphanum)', 'Invitation::uniqidInvitation/$1');
 $routes->get('scanner', 'Scanner::index');
 $routes->post('scanner/validasi', 'Scanner::validasi');
-

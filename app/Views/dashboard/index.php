@@ -42,8 +42,11 @@
                 </div>
             </div>
         </div>
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://unpkg.com/html5-qrcode"></script>
+        <script src="https://unpkg.com/html5-qrcode"></script>
+
+
         <div class="row">
             <!-- Kolom DataTable -->
             <div class="col-lg-8 mb-4">
@@ -52,14 +55,45 @@
                         <!-- <h5 class="card-title mb-4">Dashboard</h5> -->
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h5 class="card-title mb-4">GQ Invitation Dashboard</h5>
+                            <form action="#" method="post">
+                                <!-- <label for="invitation_id">Cari Nama Tamu:</label> -->
+                                <select class="form-control" id="invitation_id" name="invitation_id"
+                                    style="width: 300px;">
+                                    <option value="">-- Cari Undangan --</option>
+                                </select>
+                            </form>
 
+                            <!-- <script>
+                            $(document).ready(function() {
+                                $('#invitation_id').select2({
+                                    placeholder: 'Cari nama tamu...',
+                                    ajax: {
+                                        url: '<?= base_url('invitation/search') ?>',
+                                        dataType: 'json',
+                                        delay: 250,
+                                        data: function(params) {
+                                            return {
+                                                q: params.term
+                                            };
+                                        },
+                                        processResults: function(data) {
+                                            return {
+                                                results: data
+                                            };
+                                        },
+                                        cache: true
+                                    }
+                                });
+                            });
+                            </script> -->
                             <div class="form-floating ms-3" style="width: 300px;">
-                                <input type="text" id="scanQR" name="scanQR" class="form-control border border-info" placeholder="Scan di sini" />
+                                <input type="text" id="scanQR" name="scanQR" class="form-control border border-info"
+                                    placeholder="Scan di sini" />
                                 <label>
                                     <i class="ti ti-barcode me-2 fs-4 text-info"></i>
                                     <span class="border-start border-info ps-3">Scan di sini</span>
                                 </label>
-                                                         <script>
+                                <script>
                                     const channel = new BroadcastChannel("scanChannel");
 
                                     channel.onmessage = async (event) => {
@@ -84,27 +118,32 @@
                                                 Swal.fire({
                                                     title: "Selamat Datang",
                                                     html: `
-            <p><strong>${data.nama} & ${data.partner}</strong></p>
-            <p>Dari: ${data.dari}</p>
-            <input id="namaTamu" type="text" class="swal2-input" value="${data.nama}" />
-            <input id="partnerTamu" type="text" class="swal2-input" value="${data.partner}" />
-            <input id="jumlahHadir" type="number" class="swal2-input" placeholder="Jumlah Hadir" min="1" />
-          `,
+                                                        <p><strong>${data.nama} & ${data.partner}</strong></p>
+                                                        <p>Dari: ${data.dari}</p>
+                                                        <input id="namaTamu" type="text" class="swal2-input" value="${data.nama}" />
+                                                        <input id="partnerTamu" type="text" class="swal2-input" value="${data.partner}" />
+                                                        <input id="jumlahHadir" type="number" class="swal2-input" placeholder="Jumlah Hadir" min="1" />
+                                                    `,
                                                     imageUrl: "/images/logos/tittleLogo.png",
                                                     imageWidth: 100,
                                                     imageHeight: 100,
                                                     showCancelButton: true,
                                                     confirmButtonText: "Konfirmasi",
                                                     preConfirm: () => {
-                                                        const jumlah = document.getElementById("jumlahHadir").value;
-                                                        const nama = document.getElementById("namaTamu").value.trim();
-                                                        const partner = document.getElementById("partnerTamu").value.trim();
+                                                        const jumlah = document.getElementById(
+                                                            "jumlahHadir").value;
+                                                        const nama = document.getElementById("namaTamu")
+                                                            .value.trim();
+                                                        const partner = document.getElementById(
+                                                            "partnerTamu").value.trim();
 
                                                         if (!jumlah || parseInt(jumlah) < 1) {
-                                                            Swal.showValidationMessage("Jumlah hadir minimal 1");
+                                                            Swal.showValidationMessage(
+                                                                "Jumlah hadir minimal 1");
                                                         }
                                                         if (nama === "") {
-                                                            Swal.showValidationMessage("Nama tidak boleh kosong");
+                                                            Swal.showValidationMessage(
+                                                                "Nama tidak boleh kosong");
                                                         }
 
                                                         return {
@@ -121,15 +160,16 @@
                                                             partner
                                                         } = swalResult.value;
 
-                                                        const saveRes = await fetch("/invitation/simpan-kehadiran", {
-                                                            method: "POST",
-                                                            headers: {
-                                                                "Content-Type": "application/x-www-form-urlencoded",
-                                                            },
-                                                            body: `id_invitation=${data.id}&jumlah=${jumlah}&nama=${encodeURIComponent(
-                nama
-              )}&partner=${encodeURIComponent(partner)}`,
-                                                        });
+                                                        const saveRes = await fetch(
+                                                            "/invitation/simpan-kehadiran", {
+                                                                method: "POST",
+                                                                headers: {
+                                                                    "Content-Type": "application/x-www-form-urlencoded",
+                                                                },
+                                                                body: `id_invitation=${data.id}&jumlah=${jumlah}&nama=${encodeURIComponent(
+                                                                nama
+                                                            )}&partner=${encodeURIComponent(partner)}`,
+                                                            });
 
                                                         const saveData = await saveRes.json();
 
@@ -141,9 +181,11 @@
                                                                 showConfirmButton: false,
                                                                 timer: 2000,
                                                             });
-                                                            $("#tabel_daftar_hadir").DataTable().ajax.reload(null, false);
+                                                            $("#tabel_daftar_hadir").DataTable().ajax
+                                                                .reload(null, false);
                                                         } else {
-                                                            Swal.fire("Gagal", saveData.message, "error");
+                                                            Swal.fire("Gagal", saveData.message,
+                                                                "error");
                                                         }
                                                     }
                                                 });
@@ -158,7 +200,8 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table id="tabel_daftar_hadir" class="table table-striped table-bordered display text-nowrap mt-3">
+                            <table id="tabel_daftar_hadir"
+                                class="table table-striped table-bordered display text-nowrap mt-3">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -193,8 +236,10 @@
                                     <div class="d-flex align-items-center justify-content-between mb-3">
                                         <div class="d-flex align-items-center">
                                             <div class="position-relative">
-                                                <img src="<?= base_url(); ?>/images/profile/user-1.jpg" alt="user1" width="54" height="54" class="rounded-circle" />
-                                                <span class="position-absolute bottom-0 end-0 p-1 badge rounded-pill bg-success">
+                                                <img src="<?= base_url(); ?>/images/profile/user-1.jpg" alt="user1"
+                                                    width="54" height="54" class="rounded-circle" />
+                                                <span
+                                                    class="position-absolute bottom-0 end-0 p-1 badge rounded-pill bg-success">
                                                     <span class="visually-hidden">New alerts</span>
                                                 </span>
                                             </div>
@@ -204,7 +249,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="d-sm-flex d-none gap-3 no-block justify-content-betwen align-items-center">
+                                    <div
+                                        class="d-sm-flex d-none gap-3 no-block justify-content-betwen align-items-center">
                                         <div class="d-flex gap-2">
                                             <div class="">
                                                 <small>Hadir</small>
@@ -217,7 +263,8 @@
                                         <div class="d-flex gap-2">
                                             <div class="">
                                                 <small>Mungkin Hadir</small>
-                                                <h4 class="text-warning mb-0 "><?= esc($counting->mungkin_hadir ?? 0) ?></h4>
+                                                <h4 class="text-warning mb-0 "><?= esc($counting->mungkin_hadir ?? 0) ?>
+                                                </h4>
                                             </div>
                                             <div class="">
                                                 <div class="breadbar2"></div>
@@ -226,7 +273,8 @@
                                         <div class="d-flex gap-2">
                                             <div class="">
                                                 <small>Tidak Hadir</small>
-                                                <h4 class="text-danger mb-0 "><?= esc($counting->tidak_hadir ?? 0) ?></h4>
+                                                <h4 class="text-danger mb-0 "><?= esc($counting->tidak_hadir ?? 0) ?>
+                                                </h4>
                                             </div>
                                             <div class="">
                                                 <div class="breadbar2"></div>
@@ -234,7 +282,9 @@
                                         </div>
                                     </div>
                                     <div class="dropdown">
-                                        <a class="text-muted fw-semibold d-flex align-items-center" href="javascript:void(0)" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a class="text-muted fw-semibold d-flex align-items-center"
+                                            href="javascript:void(0)" role="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
                                             Recent Chats
                                         </a>
                                     </div>
