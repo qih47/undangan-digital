@@ -1632,15 +1632,20 @@ li span {
 /* Small devices (portrait tablets and large phones, 600px and down) */
 
 @media only screen and (max-width: 600px) {
-    .desktop-bar {
+.desktop-bar {
         display: none;
+        justify-content: center;
+        align-items: center;
         position: fixed;
         width: 100vw;
+        height: 15vw;
+        border-radius: 50px;
         padding: 0 20px 20px;
-        bottom: 0;
+        bottom: 2vw;
         left: 0;
         z-index: 99;
-        text-align: center;
+        background: #fff;
+        /* optional */
     }
 
     .wrapper-bar {
@@ -1648,8 +1653,19 @@ li span {
         padding: 0;
     }
 
+    .wrapper-bar ul {
+        display: flex;
+        /* gap: 5px; */
+        /* jarak antar ikon */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
     .wrapper-bar ul li {
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     h1 {

@@ -6,17 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Undangan Pernikahan - Gita & Qisthi</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link href="<?= base_url(); ?>/kartu/css/app.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/kartu/css/slick.css" />
-    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/kartu/css/slick-theme.css" />
-    <link rel="shortcut icon" type="image/png" href="<?= base_url(); ?>/images/logos/tittleLogo.png" />
-    <!-- Swiper CSS -->
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="https://qihproject.my.id/images/logos/tittleLogo.png" />
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link href="https://qihproject.my.id/kartu/css/app.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://qihproject.my.id/kartu/css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://qihproject.my.id/kartu/css/slick-theme.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://qihproject.my.id/invitation" />
+    <meta property="og:title" content="The Wedding of Gita & Qisthi" />
+    <meta property="og:description" content="Sabtu, 28 Juni 2025 | Tanpa mengurangi rasa hormat, kami mengundang Anda untuk hadir di hari bahagia kami." />
+    <meta property="og:image" content="https://qihproject.my.id/images/moment/photo20.webp" />
+
+    <!-- SEO Meta -->
+    <meta name="title" content="The Wedding of Gita & Qisthi" />
+    <meta name="description" content="Sabtu, 28 Juni 2025. Tanpa Mengurangi Rasa Hormat. Kami Bermaksud Mengundang Bapak/Ibu/Saudara/i, Pada Acara Pernikahan Kami" />
+    <meta name="image" content="https://qihproject.my.id/images/moment/photo20.webp" />
+    <link rel="image_src" href="https://qihproject.my.id/images/moment/photo20.webp" />
+
+    <!-- Open Graph (Facebook & WhatsApp) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://qihproject.my.id/invitation" />
+    <meta property="og:title" content="The Wedding of Gita & Qisthi" />
+    <meta property="og:description" content="Sabtu, 28 Juni 2025. Tanpa Mengurangi Rasa Hormat. Kami Bermaksud Mengundang Bapak/Ibu/Saudara/i, Pada Acara Pernikahan Kami" />
+    <meta property="og:image" content="https://qihproject.my.id/images/moment/photo20.webp" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://qihproject.my.id/invitation" />
+    <meta name="twitter:title" content="The Wedding of Gita & Qisthi" />
+    <meta name="twitter:description" content="Sabtu, 28 Juni 2025. Tanpa Mengurangi Rasa Hormat. Kami Bermaksud Mengundang Bapak/Ibu/Saudara/i, Pada Acara Pernikahan Kami" />
+    <meta name="twitter:image" content="https://qihproject.my.id/images/moment/photo20.webp" />
 </head>
+
+
 
 <body>
     <div class="layout-cover">
@@ -174,23 +205,145 @@
                         display: block;
                         width: 100%;
                     } */
+                    body {
+                        margin: 0;
+                        font-family: 'Segoe UI', sans-serif;
+                        background-color: #1a3d37;
+                    }
+
+.main-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+
+  /* Tambahan untuk geser ke atas */
+  position: relative;
+  top: -125px; /* Ubah sesuai kebutuhan: -10px, -20px, dst */
+}
+
+
+                    .invitation-wrapper {
+                        max-width: 800px;
+                        width: 100%;
+                    }
+
+                    .invitation-text p,
+                    .invitation-text h1,
+                    .invitation-text h2,
+                    .invitation-text span,
+                    .invitation-text button {
+                        color: white;
+                        text-shadow: -1px -1px 0 #9ea970, 1px -1px 0 #9ea970, -1px 1px 0 #9ea970, 1px 1px 0 #9ea970;
+                    }
+
+                    .invitation-text .couple-names {
+                        font-size: 2.5rem;
+                        margin: 10px 0;
+                    }
+
+                    .guest-name {
+                        font-size: 1.5rem;
+                        white-space: nowrap;
+                        /* Jangan bungkus teks */
+                        overflow: hidden;
+                        /* Sembunyikan teks yang overflow */
+                        text-overflow: ellipsis;
+                        /* Tambahkan "..." jika terlalu panjang */
+                        text-align: center;
+                        max-width: 90vw;
+                        margin: 0 auto;
+                    }
+
+                    .button-group {
+                        display: flex;
+                        flex-direction: row;
+                        /* kiri ke kanan */
+                        flex-wrap: nowrap;
+                        /* jangan pindah ke bawah */
+                        justify-content: center;
+                        align-items: center;
+                        gap: 16px;
+                        /* jarak antar elemen */
+                        white-space: nowrap;
+                        overflow-x: auto;
+                        /* jika terlalu panjang di layar kecil, bisa discroll */
+                        padding: 10px 0;
+                    }
+
+
+                    .buka-udangan {
+                        padding: 10px 20px;
+                        background-color: transparent;
+                        border: 2px solid #9ea970;
+                        border-radius: 50px;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+
+                    .buka-udangan,
+                    .buka-qrcode {
+                        padding: 10px 16px;
+                        white-space: nowrap;
+                        border-radius: 30px;
+                        font-weight: bold;
+                        font-size: 1rem;
+                        border: 2px solid #9ea970;
+                        background: transparent;
+                        cursor: pointer;
+                    }
+
+                    .buka-qrcode {
+                        /* border: none; */
+                        cursor: pointer;
+                        font-size: 0.9rem;
+                        text-decoration: underline;
+                    }
+
+
+                    /* .buka-qrcode {
+                        cursor: pointer;
+                        font-size: 0.9rem;
+                        text-decoration: underline;
+                    } */
+
+                    @media screen and (max-width: 480px) {
+                        .invitation-text .couple-names {
+                            font-size: 2rem;
+                        }
+
+                        .guest-name {
+                            font-size: 1.2rem;
+                        }
+
+                        .buka-udangan {
+                            font-size: 1rem;
+                            padding: 8px 16px;
+                        }
+                    }
                 </style>
                 <?php
-                if (esc($data['partner']) == "") {
-                    $undangan = esc($data['nama']);
+                if (isset($data) && isset($data['nama'])) {
+                    if (empty($data['partner'])) {
+                        $undangan = esc($data['nama']);
+                    } else {
+                        $undangan = esc($data['nama']) . ' dan ' . esc($data['partner']);
+                    }
                 } else {
-                    $undangan = esc($data['nama']) . ' dan ' . esc($data['partner']);
+                    $undangan = 'Tamu Undangan';
                 }
                 ?>
                 <div class="main-title">
                     <div class="top-title">
                         <div class="invitation-wrapper">
                             <div class="invitation-text">
-                                <p class="wedding-of" style="color: #9ea970;">THE WEDDING OF</p>
-                                <h1 class="couple-names" style="color: #9ea970;">GITA <br>&<br>QISTHI</h1>
-                                <p class="dear" style="color: #9ea970;">Dear</p>
-                                <h2 class="guest-name" style="color: #9ea970;"> <?= esc(strtoupper($undangan)) ?></h2>
-                                <p class="disclaimer" style="color: #9ea970;">*Dengan senang hati mengundang anda ke acara pernikahan kami.</p>
+                                <p>THE WEDDING OF</p>
+                                <h1 class="couple-names">GITA <br>&<br>QISTHI</h1>
+                                <p class="dear">Dear</p>
+                                <h2 class="guest-name"><?= esc(strtoupper($undangan)) ?></h2>
+                                <p class="disclaimer">*Dengan senang hati mengundang anda ke acara pernikahan kami.</p>
 
                                 <div class="button-group">
                                     <button class="buka-udangan aniTitle">BUKA UNDANGAN</button>
@@ -207,7 +360,7 @@
                 <audio
                     id="background_music"
                     loop="loop"
-                    src="<?= base_url(); ?>/kartu/music/Let_It_Be_Me.mp3"></audio>
+                    src="<?= base_url(); ?>/kartu/music/music.mp3"></audio>
                 <div id="pay" class="float">
                     <a
                         id="pay-button"
@@ -299,7 +452,7 @@
                                 <!-- <sup class="pangkat">ND</sup> 2023 -->
                             </span>
                             <a
-                                href="https://calendar.google.com/calendar/u/0/r/eventedit/MDc3amVqdnZkNTQya2RqbzNscG92NDk4MnMgYWE2ZjcxYzk4OTc1ZWU0MDYzZGY0OGVjMWJkYzdlNWUzYTYyMjVlYTYyOWIzZTM4M2VkM2IwNzBjMzMwMDJlYUBn"
+                                href="https://calendar.app.google/W5QdwFza5vvf9yni6"
                                 target="_blank"
                                 class="save-date gs_reveal gs_reveal_fromLeft">
                                 SAVE THE DATE
@@ -392,8 +545,7 @@
                                     <p class="font-dasar">
                                         Dengan memohon rahmat dan ridho Allah SWT, serta mengucap
                                         rasa syukur atas karunia Allah SWT, Kami hendak
-                                        menyampaikan kabar bahagia pernikahan Kami serta Marhabah
-                                        & Aqiqah. Yang Insya Allah akan dilaksanakan :
+                                        menyampaikan kabar bahagia pernikahan Kami. Yang Insya Allah akan dilaksanakan :
                                     </p>
                                 </div>
                                 <div class="wedding-name">
@@ -406,12 +558,24 @@
                                     <span class="time-title gs_reveal">
                                         SABTU, 28 JUNI 2025
                                     </span>
-                                    <span class="time-title gs_reveal"> 08:00 - SELESAI </span>
+                                    <span class="time-title gs_reveal"> 08:00 - SELESAI</span>
+                                </div>
+                                <div class="wedding-name">
+                                    <span
+                                        class="akad-nikah signature-font gs_reveal gs_reveal_fromRight">
+                                        Resepsi
+                                    </span>
+                                </div>
+                                <div class="wedding-time">
+                                    <span class="time-title gs_reveal">
+                                        SABTU, 28 JUNI 2025
+                                    </span>
+                                    <span class="time-title gs_reveal"> 11:00 - 14.00 WIB </span>
                                 </div>
                                 <div class="wedding-bottom">
                                     <span class="kediaman gs_reveal"> LAZETA CAFE </span>
                                     <span class="kediaman font-dasar gs_reveal">
-                                        Jl. Margacinta No.91, Cijaura, Kec. Buahbatu, dari
+                                        Jl. Margacinta No.91, Cijaura, Kec. Buahbatu, Kota
                                         Bandung, Jawa Barat 40287
                                     </span>
                                     <a href="#maps-id" class="kediaman location gs_reveal">
@@ -740,28 +904,28 @@
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
                                     <h5><strong>First Meet (2021)</strong></h5>
-                                    <p>Tahun 2021 kami pertama kali bertemu di tempat kerja yang sama, saat itu kami hanya berteman biasa.</p>
+                                    <p>Diantara ribuan langkah dalam hidup, kami dipertemukan secara tak terduga, di tempat kerja yang sama, sepertinya semesta memang sengaja merangkainya.</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
                                     <h5><strong>Relationship (2024)</strong></h5>
-                                    <p>Pada tanggal 16 Juni 2024 kami mulai menjalin hubungan sebagai sepasang kekasih.</p>
+                                    <p>Dari tatap yang tak sengaja, tumbuhlah percakapan sederhana. Dari pertemanan, hadir kenyamanan. Perlahan, rasa itu tumbuh menjadi cinta.</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
                                     <h5><strong>Engagement (2025)</strong></h5>
-                                    <p>Tahun ini kami memutuskan untuk bertunangan pada 26 Januari 2025.</p>
+                                    <p>Kami berjalan bersama, melewati segala cerita dalam perbedaan, lalu kami menemukan satu hal yang sama yaitu Keinginan untuk terus melangkah bersama.</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
                                     <h5><strong>Married (2025)</strong></h5>
-                                    <p>Kami memutuskan untuk mengikat janji suci pernikahan pada 28 Juni 2025.</p>
+                                    <p>Hari ini, kami memulai babak baru. Bukan lagi sekedar "Aku" dan "kamu", tapi "Kita". Bukan sekedar cerita cinta, tapi janji untuk seumur hidup. Dan inilah kisah kami, yang kini berlanjut menjadi Ikatan Suci.</p>
                                 </div>
                             </div>
                         </div>
@@ -889,7 +1053,7 @@
                         <a
                             class="font-dasar font-black mt-5 gs_reveal"
                             style="font-weight: 600;margin-top: 20px;">
-                            Jl. Margacinta No.91, Cijaura, Kec. Buahbatu, dari Bandung, Jawa
+                            Jl. Margacinta No.91, Cijaura, Kec. Buahbatu, Kota Bandung, Jawa
                             Barat 40287
                         </a>
                         <a
@@ -1009,6 +1173,37 @@
                     <!-- <div class="last-img w-100 gs_reveal">
                         <img src="img/img-wedding.svg" alt="">
                     </div> -->
+
+
+<div style="position: relative; text-align: center; color: white; margin-top: 20px;">
+  <img src="<?= base_url(); ?>images/moment/photo10.JPG" alt="Background" class="img-static w-100" />
+
+  <div style="
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+  ">
+    <p style="font-size: 1rem; line-height: 1.6; margin-bottom: 1rem;">
+      Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan do'a restu kepada kedua mempelai.
+    </p>
+    <p style="font-size: 0.9rem; font-style: italic; margin-bottom: 1rem;">
+      Hormat Kami Yang Mengundang
+    </p>
+    <h2 style="font-size: 1.5rem; font-weight: bold; margin: 0;">Gita & Qisthi</h2>
+  </div>
+</div>
+
+
+
+
                     <div class="last-img w-100 gs_reveal">
                         <img src="<?= base_url(); ?>/kartu/img/img-end.svg" class="w-100" alt="" />
                     </div>
@@ -1077,6 +1272,11 @@
                         });
                     });
                 </script>
+                <h2 class="modal-h aniModal">KIRIM KADO</h2>
+                <p class="font-digital aniModal" style="color: #000; width: 100%">
+                    Anda dapat mengirim kado ke :<br>
+                    Jl. Propelat Barat II No. 40 RT. 005/RW. 21 Margasari Buah Batu (Margacinta) 40286 (Yayasan Berkah Alfatihah)
+                </p>
                 <!-- <div class="choosen-bank">
                     <div class="bank-img aniModal">
                         <img src="img/bank/mandiri.png" alt="">
